@@ -27,5 +27,12 @@
         modules = [./nixos/tybeastPC/configuration.nix];
       };
     };
+    nixosConfigurations = {
+      tybeastLP = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        # > Our main nixos configuration file <
+        modules = [./nixos/tybeastLP/configuration.nix];
+      };
+    };
   };
 }

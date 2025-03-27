@@ -7,9 +7,9 @@
     enable = true;
     settings = {
       preload = [
-        "~/.config/nix/home-manager/modules/wallpaper.png"
+        "~/.config/nix/home-manager/wallpaper.png"
       ];
-      wallpaper = [", ~/.config/nix/home-manager/modules/wallpaper.png"];
+      wallpaper = [", ~/.config/nix/home-manager/wallpaper.png"];
     };
   };
 }
