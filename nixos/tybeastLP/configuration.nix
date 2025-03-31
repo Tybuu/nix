@@ -18,6 +18,7 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+    ./udev.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 

@@ -68,9 +68,12 @@
     python3
     btop
     usbutils
-    lutris
     osu-lazer-bin
     tty-clock
+    moonlight-qt
+    networkmanagerapplet
+    prusa-slicer
+    google-chrome
   ];
 
   # Enable home-manager and git
