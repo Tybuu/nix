@@ -71,9 +71,10 @@
     osu-lazer-bin
     tty-clock
     moonlight-qt
-    networkmanagerapplet
     prusa-slicer
     google-chrome
+    unzip
+    xclicker
   ];
 
   # Enable home-manager and git
