@@ -11,5 +11,7 @@
     destination = "/etc/udev/rules.d/69-probe-rs.rules";
   };
 in {
-  services.udev.packages = [extraUdevRules];
+  users.extraGroups.plugdev = {};
+  users.extraUsers.tybuu.extraGroups = ["plugdev" "dialout"];
+  services.udev.packages = [extraUdevRules pkgs.openocd];
 }

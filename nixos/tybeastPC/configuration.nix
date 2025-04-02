@@ -10,7 +10,7 @@
   # You can import other NixOS modules here
   imports = [
     ./hardware-configuration.nix
-    ./udev.nix
+    ../systemModules/udev.nix
     ./lutris.nix
     inputs.home-manager.nixosModules.home-manager
   ];
