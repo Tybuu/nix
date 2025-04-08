@@ -66,6 +66,7 @@
     unzip
     xclicker
     google-chrome
+    waybar
   ];
 
   # Enable home-manager and git
