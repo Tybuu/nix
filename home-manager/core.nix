@@ -12,6 +12,7 @@
     ./modules/hyprpaper.nix
     ./modules/kitty.nix
     ./modules/fish.nix
+    ./modules/ghostty.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
