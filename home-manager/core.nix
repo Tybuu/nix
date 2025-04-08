@@ -7,6 +7,12 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./modules/nvim.nix
+    ./modules/hyprpaper.nix
+    ./modules/kitty.nix
+    ./modules/fish.nix
+  ];
   # You can import other home-manager modules here
   nixpkgs = {
     # You can add overlays here
@@ -59,6 +65,7 @@
     usbutils
     unzip
     xclicker
+    google-chrome
   ];
 
   # Enable home-manager and git
