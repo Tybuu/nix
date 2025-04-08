@@ -8,17 +8,6 @@
   ...
 }: {
   # You can import other home-manager modules here
-  imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
-
-    # You can also split up your configuration and import pieces of it here:
-    ./modules/kitty.nix
-    ./modules/fish.nix
-    ./modules/nvim.nix
-    ./modules/hyprpaper.nix
-  ];
-
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -68,11 +57,6 @@
     python3
     btop
     usbutils
-    osu-lazer-bin
-    tty-clock
-    moonlight-qt
-    prusa-slicer
-    google-chrome
     unzip
     xclicker
   ];
