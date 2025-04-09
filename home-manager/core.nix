@@ -13,6 +13,7 @@
     ./modules/kitty.nix
     ./modules/fish.nix
     ./modules/ghostty.nix
+    ./modules/waybar.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
@@ -67,7 +68,6 @@
     unzip
     xclicker
     google-chrome
-    waybar
   ];
 
   # Enable home-manager and git
