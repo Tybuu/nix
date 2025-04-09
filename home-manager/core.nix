@@ -63,12 +63,16 @@
     cargo
     rustc
     gcc
-    python3
     btop
     usbutils
     unzip
     xclicker
     google-chrome
+    (pkgs.python3.withPackages (python-pkgs: [
+      python-pkgs.numpy
+      python-pkgs.matplotlib
+      python-pkgs.scipy
+    ]))
   ];
 
   # Enable home-manager and git
