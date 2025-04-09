@@ -21,17 +21,15 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      tybeastPC = nixpkgs.lib.nixosSystem {
+      tybeast = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
-        modules = [./nixos/tybeastPC/configuration.nix];
+        modules = [./nixos/tybeast/configuration.nix];
       };
-    };
-    nixosConfigurations = {
-      tybeastLP = nixpkgs.lib.nixosSystem {
+      tyoga = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
-        modules = [./nixos/tybeastLP/configuration.nix];
+        modules = [./nixos/tyoga/configuration.nix];
       };
     };
   };

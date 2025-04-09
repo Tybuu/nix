@@ -15,14 +15,14 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  networking.hostName = "tybeastLP";
+  networking.hostName = "tyoga";
   networking.networkmanager.enable = true;
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
       # Import your home-manager configuration
-      tybuu = import ../../home-manager/devices/lp.nix;
+      tybuu = import ../../home-manager/devices/tyoga.nix;
     };
   };
 }

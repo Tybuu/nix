@@ -16,7 +16,7 @@
   ];
 
   networking = {
-    hostName = "tybeastPC";
+    hostName = "tybeast";
     networkmanager.enable = true;
     interfaces.enp4s0 = {
       useDHCP = false;
@@ -90,7 +90,7 @@
     extraSpecialArgs = {inherit inputs;};
     users = {
       # Import your home-manager configuration
-      tybuu = import ../../home-manager/devices/pc.nix;
+      tybuu = import ../../home-manager/devices/tybeast.nix;
     };
   };
   services.gvfs.enable = true;
