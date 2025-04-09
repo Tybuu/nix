@@ -14,6 +14,7 @@
     ./modules/fish.nix
     ./modules/ghostty.nix
     ./modules/waybar.nix
+    ./modules/starship.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
@@ -73,7 +74,6 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.zoxide.enable = true;
-  programs.starship.enable = true;
   programs.zoxide.enableFishIntegration = true;
   programs.git = {
     enable = true;
