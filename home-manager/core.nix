@@ -66,7 +66,6 @@
     btop
     usbutils
     unzip
-    xclicker
     google-chrome
     (pkgs.python3.withPackages (python-pkgs: [
       python-pkgs.numpy

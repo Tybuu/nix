@@ -7,5 +7,6 @@
     osu-lazer-bin
     moonlight-qt
     lutris
+    xclicker
   ];
 }
