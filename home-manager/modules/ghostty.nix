@@ -9,6 +9,7 @@
     settings = {
       theme = "catppuccin-mocha";
       command = "${pkgs.fish.outPath}/bin/fish --login --interactive";
+      font-size = 15;
     };
   };
 }
