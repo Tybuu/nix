@@ -15,6 +15,7 @@
     ./modules/ghostty.nix
     ./modules/waybar.nix
     ./modules/starship.nix
+    ./modules/foot.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
@@ -44,8 +45,8 @@
     homeDirectory = "/home/tybuu";
   };
 
-  # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
+    sd-switch
     btop
     eza
     wl-clipboard
@@ -71,6 +72,7 @@
       python-pkgs.numpy
       python-pkgs.matplotlib
       python-pkgs.scipy
+      python-pkgs.pip
     ]))
   ];
 
