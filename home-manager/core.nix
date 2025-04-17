@@ -74,6 +74,7 @@
       python-pkgs.scipy
       python-pkgs.pip
     ]))
+    typst
   ];
 
   # Enable home-manager and git

@@ -23,12 +23,14 @@
         rust-analyzer
         nil
         pyright
+        tinymist
       ];
 
       formatters = with pkgs; [
         stylua
         alejandra
         rustfmt
+        typstyle
       ];
 
       dep = with pkgs; [

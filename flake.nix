@@ -26,6 +26,11 @@
         # > Our main nixos configuration file <
         modules = [./nixos/tybeast/configuration.nix];
       };
+      tymid = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        # > Our main nixos configuration file <
+        modules = [./nixos/tymid/configuration.nix];
+      };
       tyoga = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
