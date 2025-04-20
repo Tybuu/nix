@@ -31,8 +31,7 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
-  # hardware.opentabletdriver.enable = true;
-  # hardware.opentabletdriver.daemon.enable = true;
+  hardware.opentabletdriver.enable = true;
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
@@ -65,6 +64,7 @@
 
   environment.systemPackages = with pkgs; [
     wineWowPackages.waylandFull
+    opentabletdriver
   ];
 
   # programs.steam = {
