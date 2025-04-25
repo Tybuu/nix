@@ -18,6 +18,9 @@
   networking.hostName = "tyoga";
   networking.networkmanager.enable = true;
 
+  environment.systemPackages = with pkgs; [
+  ];
+
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {

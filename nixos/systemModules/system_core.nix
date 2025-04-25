@@ -50,6 +50,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware.bluetooth.enable = true;
+  hardware.rtl-sdr.enable = true;
 
   programs.hyprland.enable = true;
   boot.loader = {
