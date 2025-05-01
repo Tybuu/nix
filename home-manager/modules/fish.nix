@@ -13,6 +13,7 @@
     '';
     shellAliases = {
       n = "nvim";
+      nv = "neovide";
       ls = "eza --icons";
     };
   };
