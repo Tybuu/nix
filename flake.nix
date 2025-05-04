@@ -48,7 +48,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         # > Our main home-manager configuration file <
-        modules = [./home-manager/devices/tybeast.nix];
+        modules = [./home-manager/devices/tymid.nix];
       };
       "tybuu@tyoga" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;

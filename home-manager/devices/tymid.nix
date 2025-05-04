@@ -1,11 +1,22 @@
 {
-  pkgs,
+  inputs,
   lib,
+  config,
+  pkgs,
   ...
 }: {
+  # You can import other home-manager modules here
+  imports = [
+    ../core.nix
+    ../modules/gaming.nix
+  ];
+
   wayland.windowManager.hyprland = {
     settings = {
-      # Monitor Configuration
+      bind = [
+        "$mainMod, Z, exec, moonlight stream tybeast Desktop --1440 --game-optimization --bitrate 69000 --fps 180 --no-hdr"
+      ];
+
       monitor = [
         "DP-1, 1920x1080@144, 0x-512, 1, transform, 1"
         "DP-2, 2560x1440@180, 1080x-180, 1"
@@ -25,4 +36,7 @@
       ];
     };
   };
+  home.packages = with pkgs; [
+    prusa-slicer
+  ];
 }
