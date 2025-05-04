@@ -81,6 +81,8 @@
       python-pkgs.pip
     ]))
     typst
+    rnote
+    neovide
   ];
 
   # Enable home-manager and git

@@ -24,6 +24,7 @@
         nil
         pyright
         tinymist
+        bash-language-server
       ];
 
       formatters = with pkgs; [
