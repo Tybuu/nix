@@ -86,12 +86,5 @@
     };
   };
 
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      # Import your home-manager configuration
-      tybuu = import ../../home-manager/devices/tybeast.nix;
-    };
-  };
   services.gvfs.enable = true;
 }

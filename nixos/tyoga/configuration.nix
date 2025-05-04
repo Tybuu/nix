@@ -12,7 +12,6 @@
     ./hardware-configuration.nix
     ../systemModules/udev.nix
     ../systemModules/system_core.nix
-    inputs.home-manager.nixosModules.home-manager
   ];
 
   networking.hostName = "tyoga";
@@ -20,12 +19,4 @@
 
   environment.systemPackages = with pkgs; [
   ];
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      # Import your home-manager configuration
-      tybuu = import ../../home-manager/devices/tyoga.nix;
-    };
-  };
 }

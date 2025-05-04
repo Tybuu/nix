@@ -12,7 +12,6 @@
     ./hardware-configuration.nix
     ../systemModules/udev.nix
     ../systemModules/system_core.nix
-    inputs.home-manager.nixosModules.home-manager
   ];
 
   networking = {
@@ -84,12 +83,5 @@
     };
   };
 
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      # Import your home-manager configuration
-      tybuu = import ../../home-manager/devices/tybeast.nix;
-    };
-  };
   services.gvfs.enable = true;
 }

@@ -24,18 +24,37 @@
     nixosConfigurations = {
       tybeast = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        # > Our main nixos configuration file <
         modules = [./nixos/tybeast/configuration.nix];
       };
       tymid = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        # > Our main nixos configuration file <
         modules = [./nixos/tymid/configuration.nix];
       };
       tyoga = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        # > Our main nixos configuration file <
         modules = [./nixos/tyoga/configuration.nix];
+      };
+    };
+    homeConfigurations = {
+      # home-manager configuration entrypoint
+      # Available through 'home-manager switch --flake .#username@hostname'
+      "tybuu@tybeast" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        # > Our main home-manager configuration file <
+        modules = [./home-manager/devices/tybeast.nix];
+      };
+      "tybuu@tymid" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        # > Our main home-manager configuration file <
+        modules = [./home-manager/devices/tybeast.nix];
+      };
+      "tybuu@tyoga" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        # > Our main home-manager configuration file <
+        modules = [./home-manager/devices/tyoga.nix];
       };
     };
   };
