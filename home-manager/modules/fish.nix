@@ -23,6 +23,7 @@
     };
     shellAliases = {
       ls = "eza --icons";
+      hms = "home-manager switch --flake";
     };
   };
 }

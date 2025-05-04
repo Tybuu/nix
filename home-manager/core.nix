@@ -12,10 +12,10 @@
     ./modules/hyprpaper.nix
     ./modules/kitty.nix
     ./modules/fish.nix
-    ./modules/ghostty.nix
     ./modules/waybar.nix
     ./modules/starship.nix
     ./modules/foot.nix
+    ./modules/hyprland.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
