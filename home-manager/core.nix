@@ -8,7 +8,7 @@
   ...
 }: {
   imports = [
-    ./modules/nvim.nix
+    # ./modules/nvim.nix
     ./modules/hyprpaper.nix
     ./modules/kitty.nix
     ./modules/fish.nix
@@ -16,6 +16,7 @@
     ./modules/starship.nix
     ./modules/foot.nix
     ./modules/hyprland.nix
+    ./modules/nvf.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {

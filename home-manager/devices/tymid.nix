@@ -9,6 +9,7 @@
   imports = [
     ../core.nix
     ../modules/gaming.nix
+    ../modules/nvf.nix
   ];
 
   wayland.windowManager.hyprland = {
