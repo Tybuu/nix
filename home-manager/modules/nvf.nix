@@ -3,17 +3,26 @@
   lib,
   ...
 }: {
+  imports = [
+    ./nvf/nvf_keybinds.nix
+  ];
   programs.nvf = {
     enable = true;
-
     settings = {
       vim = {
+        extraPackages = with pkgs; [
+          rust-analyzer
+        ];
         package = pkgs.unstable.neovim-unwrapped;
-        luaConfigPost = ''
-          vim.opt.shiftwidth = 2
-          vim.opt.expandtab = true
-          vim.opt.tabstop = 2
-        '';
+        luaConfigPost =
+          /*
+          lua
+          */
+          ''
+            vim.opt.shiftwidth = 2
+            vim.opt.expandtab = true
+            vim.opt.tabstop = 2
+          '';
         spellcheck = {
           # enable = true;
         };
@@ -60,40 +69,14 @@
           # Languages that are enabled in the maximal configuration.
           bash.enable = true;
           clang.enable = true;
-          css.enable = true;
-          html.enable = true;
-          sql.enable = true;
-          java.enable = true;
-          kotlin.enable = true;
-          ts.enable = true;
-          go.enable = true;
           lua.enable = true;
-          zig.enable = true;
           python.enable = true;
           typst.enable = true;
           rust = {
             enable = true;
+            lsp.package = ["rust-analyzer"];
             crates.enable = true;
           };
-
-          # Language modules that are not as common.
-          assembly.enable = false;
-          astro.enable = false;
-          nu.enable = false;
-          csharp.enable = false;
-          julia.enable = false;
-          vala.enable = false;
-          scala.enable = false;
-          r.enable = false;
-          gleam.enable = false;
-          dart.enable = false;
-          ocaml.enable = false;
-          elixir.enable = false;
-          haskell.enable = false;
-          ruby.enable = false;
-          fsharp.enable = false;
-
-          tailwind.enable = false;
         };
 
         visuals = {
@@ -149,7 +132,12 @@
         # treesitter.context.enable = true;
 
         binds = {
-          whichKey.enable = true;
+          whichKey = {
+            enable = true;
+            setupOpts = {
+              preset = "helix";
+            };
+          };
         };
 
         telescope.enable = true;
@@ -182,7 +170,6 @@
           ccc.enable = false;
           vim-wakatime.enable = false;
           diffview-nvim.enable = true;
-          yanky-nvim.enable = false;
           icon-picker.enable = true;
           surround.enable = true;
           multicursors.enable = true;

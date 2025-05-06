@@ -62,7 +62,10 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         # > Our main home-manager configuration file <
-        modules = [./home-manager/devices/tyoga.nix];
+        modules = [
+          ./home-manager/devices/tyoga.nix
+          nvf.homeManagerModules.default
+        ];
       };
     };
   };

@@ -8,6 +8,7 @@
   # You can import other home-manager modules here
   imports = [
     ../core.nix
+    # ../modules/nvf.nix
     ../modules/nvim.nix
   ];
 
