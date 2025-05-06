@@ -11,10 +11,11 @@
         bind -M insert \cf accept-autosuggestion
       end
       function n
-        hyprctl dispatch movetoworkspacesilent 69 > /dev/null 2>&1
+        set t_pid (hyprctl activewindow | grep "pid" | sed -E "s/.*pid: (.*)/\1/")
+        hyprctl dispatch movetoworkspacesilent special:temp > /dev/null 2>&1
         neovide $argv > /dev/null 2>&1
         set cur (hyprctl activeworkspace | head -n 1| sed -E 's/.*\(([0-9]+)\).*/\1/')
-        hyprctl dispatch workspace 69 > /dev/null 2>&1
+        hyprctl dispatch focuswindow pid:$t_pid > /dev/null 2>&1
         hyprctl dispatch movetoworkspace $cur > /dev/null 2>&1
       end
     '';

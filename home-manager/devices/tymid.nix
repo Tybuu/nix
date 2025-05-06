@@ -9,7 +9,6 @@
   imports = [
     ../core.nix
     ../modules/gaming.nix
-    # ../modules/nvf.nix
     ../modules/nvim.nix
   ];
 

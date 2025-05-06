@@ -140,23 +140,24 @@
           };
         };
 
-        telescope.enable = true;
+        telescope = {
+          enable = true;
+        };
 
         git = {
           enable = true;
           gitsigns.enable = true;
           gitsigns.codeActions.enable = false; # throws an annoying debug message
         };
-
+        mini.icons.enable = true;
         minimap = {
           minimap-vim.enable = false;
           codewindow.enable = true; # lighter, faster, and uses lua for configuration
         };
 
-        dashboard = {
-          dashboard-nvim.enable = false;
-          alpha.enable = true;
-        };
+        # dashboard = {
+        #   dashboard-nvim.enable = true;
+        # };
 
         notify = {
           nvim-notify.enable = true;
