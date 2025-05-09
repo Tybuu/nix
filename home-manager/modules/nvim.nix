@@ -11,6 +11,7 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    defaultEditor = true;
 
     withRuby = true;
     withNodeJs = true;

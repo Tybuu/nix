@@ -92,7 +92,9 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Inconsolata" "JetBrainsMono"];})
+    # (nerdfonts.override {fonts = ["Inconsolata" "JetBrainsMono"];})
+    nerd-fonts.inconsolata
+    nerd-fonts.jetbrains-mono
   ];
 
   users.users = {

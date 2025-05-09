@@ -25,7 +25,7 @@
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
       (final: _prev: {
-        unstable = import inputs.nixpkgs-unstable {
+        stable = import inputs.nixpkgs-stable {
           system = final.system;
           config.allowUnfree = true;
         };
