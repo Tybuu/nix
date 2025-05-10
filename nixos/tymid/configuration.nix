@@ -18,6 +18,7 @@
     hostName = "tymid";
     networkmanager.enable = true;
     interfaces.enp0s31f6 = {
+      useDHCP = false;
       ipv4.addresses = [
         {
           address = "192.168.10.7";
@@ -39,7 +40,7 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).

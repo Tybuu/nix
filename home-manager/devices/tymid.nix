@@ -19,9 +19,9 @@
       ];
 
       monitor = [
-        "DP-1, 1920x1080@144, 0x-512, 1, transform, 1"
-        "DP-2, 2560x1440@180, 1080x-180, 1"
-        "HDMI-A-1, preferred, 3640x0, 1"
+        "DP-1, 1920x1080@144, 0x0, 1"
+        "DP-2, 2560x1440@180, 1920x-180, 1"
+        "HDMI-A-1, preferred, 4480x0, 1"
       ];
 
       workspace = [
