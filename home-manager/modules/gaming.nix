@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [
     osu-lazer-bin
-    moonlight-qt
+    stable.moonlight-qt
     lutris
     xclicker
   ];

@@ -9,13 +9,17 @@
   imports = [
     ../core.nix
     ../modules/gaming.nix
-    ../modules/nvim.nix
   ];
 
   wayland.windowManager.hyprland = {
     settings = {
       bind = [
-        "$mainMod, Z, exec, moonlight stream tybeast Desktop --1440 --game-optimization --bitrate 69000 --fps 180 --no-hdr"
+        "$mainMod, Z, exec, hyprctl clients | grep \"moonlight\" || [workspace special:gaming silent] moonlight stream tybeast Desktop --1440 --game-optimization --bitrate 69000 --fps 180 --no-hdr"
+        "$mainMod, P, exec, ~/.config/hypr/music.sh"
+      ];
+
+      windowrule = [
+        "workspace 6 silent, initialClass:.*Moonlight.*"
       ];
 
       monitor = [
@@ -24,15 +28,20 @@
         "HDMI-A-1, preferred, 4480x0, 1"
       ];
 
+      cursor = {
+        warp_on_change_workspace = 2;
+        default_monitor = "DP-2";
+      };
+
       workspace = [
         "1, monitor:DP-1"
-        "2, monitor:DP-2"
-        "3, monitor:HDMI-A-1"
-        "4, monitor:DP-1"
+        "2, monitor:DP-1"
+        "3, monitor:DP-1"
+        "4, monitor:DP-2"
         "5, monitor:DP-2"
-        "6, monitor:HDMI-A-1"
-        "7, monitor:DP-1"
-        "8, monitor:DP-2"
+        "6, monitor:DP-2"
+        "7, monitor:HDMI-A-1"
+        "8, monitor:HDMI-A-1:"
         "9, monitor:HDMI-A-1"
       ];
     };

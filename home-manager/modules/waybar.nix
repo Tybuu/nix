@@ -6,7 +6,7 @@
         layer = "top";
         position = "top";
         modules-left = [
-          "hyprland/workspaces"
+          "river/tags"
         ];
         modules-center = [
           "custom/music"
@@ -25,16 +25,33 @@
           on-scroll-down = "hyprctl dispatch workspace e+1";
           format = "{icon}";
           all-outputs = true;
+          all = false;
           format-icons = {
             "1" = "󰖟";
-            "2" = "";
+            "2" = "";
             "3" = "";
-            "4" = "";
-            "5" = "󰺷";
-            "6" = "";
-
+            "4" = "";
+            "5" = "";
+            "6" = "󰺷";
+            "7" = "";
+            "8" = "󰊪";
             default = "";
           };
+        };
+        "river/tags" = {
+          num-tags = 9;
+          hide-vacant = true;
+          tag-labels = [
+            "󰼏"
+            "󰼐"
+            "󰼑"
+            "󰼒"
+            "󰼓"
+            "󰼔"
+            "󰼕"
+            "󰼖"
+            "󰼗"
+          ];
         };
         tray = {
           icon-size = 21;
@@ -169,6 +186,24 @@
 
       #workspaces button:hover {
           color: @sapphire;
+          border-radius: 1rem;
+      }
+
+      #tags {
+        border-radius: 1rem;
+        margin: 5px;
+        background-color: @surface0;
+        margin-left: 1rem;
+      }
+
+      #tags button {
+          color: @lavender;
+          border-radius: 1rem;
+          padding: 0.4rem;
+      }
+
+      #tags button.focused {
+          color: @sky;
           border-radius: 1rem;
       }
 

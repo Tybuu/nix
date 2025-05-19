@@ -8,7 +8,7 @@
   ...
 }: {
   imports = [
-    # ./modules/nvim.nix
+    ./modules/nvim.nix
     ./modules/hyprpaper.nix
     ./modules/kitty.nix
     ./modules/fish.nix
@@ -16,7 +16,6 @@
     ./modules/starship.nix
     ./modules/foot.nix
     ./modules/hyprland.nix
-    # ./modules/nvf.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
@@ -30,6 +29,7 @@
           config.allowUnfree = true;
         };
       })
+      (import ./overlays/river-bedload.nix)
     ];
     # Configure your nixpkgs instance
     config = {
@@ -84,8 +84,17 @@
     typst
     rnote
     neovide
+    river-bedload
+    jq
+    lswt
+    wlr-randr
   ];
-
+  home.file = {
+    ".config/river" = {
+      source = ./dotfiles/river;
+      recursive = true;
+    };
+  };
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.zoxide.enable = true;

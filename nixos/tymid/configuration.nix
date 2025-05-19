@@ -17,8 +17,9 @@
   networking = {
     hostName = "tymid";
     networkmanager.enable = true;
+    networkmanager.unmanaged = ["interface-name:enp0s31f6"];
     interfaces.enp0s31f6 = {
-      useDHCP = false;
+      # useDHCP = false;
       ipv4.addresses = [
         {
           address = "192.168.10.7";
@@ -32,6 +33,7 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opentabletdriver.enable = true;
+  programs.river.enable = true;
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
