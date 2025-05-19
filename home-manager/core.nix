@@ -88,6 +88,7 @@
     jq
     lswt
     wlr-randr
+    chafa
   ];
   home.file = {
     ".config/river" = {
