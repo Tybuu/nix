@@ -33,7 +33,6 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opentabletdriver.enable = true;
-  programs.river.enable = true;
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;

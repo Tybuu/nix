@@ -53,6 +53,7 @@
   hardware.rtl-sdr.enable = true;
 
   programs.hyprland.enable = true;
+  programs.river.enable = true;
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
