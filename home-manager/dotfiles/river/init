@@ -157,4 +157,11 @@ if [[ $(hostname) = "tymid" ]]; then
   riverctl map normal Super+Shift Comma send-to-output "DP-1"
   riverctl map normal Super+Shift Period send-to-output "DP-2"
   riverctl map normal Super+Shift Slash send-to-output "HDMI-A-1"
+
+elif [[ $(hostname) = "tyoga" ]]; then
+  riverctl map normal Super Comma focus-output "eDP-1"
+  riverctl map normal Super Period focus-output "DP-1"
+
+  riverctl map normal Super+Shift Comma send-to-output "eDP-1"
+  riverctl map normal Super+Shift Period send-to-output "DP-1"
 fi
