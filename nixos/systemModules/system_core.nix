@@ -51,6 +51,7 @@
 
   hardware.bluetooth.enable = true;
   hardware.rtl-sdr.enable = true;
+  hardware.hackrf.enable = true;
 
   programs.hyprland.enable = true;
   programs.river.enable = true;
