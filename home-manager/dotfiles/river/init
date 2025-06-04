@@ -20,6 +20,7 @@ riverctl map normal Super B spawn firefox
 riverctl map normal Super R spawn "wofi --show drun"
 riverctl map normal Super F spawn nautilus 
 riverctl map normal Super W spawn "pkill waybar || waybar"
+riverctl map normal Super+Shift S spawn "hyprshot -m region"
 
 # Window Manipulation
 riverctl map normal Super C close
@@ -143,7 +144,7 @@ if [[ $(hostname) = "tymid" ]]; then
   # App binds
   riverctl map normal Super+Shift B spawn "firefox -P gedisu --new-window https://music.youtube.com/"
   riverctl map normal Super P spawn ~/.config/river/scripts/music.sh
-  riverctl map normal Super Z spawn ~/.config/river/scripts/gaming.sh
+  riverctl map normal Super+Shift Z spawn ~/.config/river/scripts/gaming.sh
 
   # Moonlight rules so it always spawn in main monitor on a specific tag
   riverctl rule-add -app-id "com.moonlight_stream.Moonlight" tearing

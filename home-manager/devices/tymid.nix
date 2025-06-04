@@ -48,5 +48,6 @@
   };
   home.packages = with pkgs; [
     prusa-slicer
+    kicad-unstable
   ];
 }
