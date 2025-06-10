@@ -126,6 +126,20 @@
     enable = true;
   };
 
+  # Enable screensharing
+  xdg = {
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      config = {
+        common.default = ["gtk"];
+      };
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+      ];
+    };
+  };
+
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = [];
 

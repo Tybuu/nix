@@ -165,4 +165,5 @@ elif [[ $(hostname) = "tyoga" ]]; then
 
   riverctl map normal Super+Shift Comma send-to-output "eDP-1"
   riverctl map normal Super+Shift Period send-to-output "DP-1"
+  riverctl input pointer-1160-4178-04881080:00_0488:1052_Touchpad tap enabled
 fi
