@@ -28,6 +28,10 @@
           system = final.system;
           config.allowUnfree = true;
         };
+        osu-source = import inputs.nixpkgs-osu {
+          system = final.system;
+          config.allowUnfree = true;
+        };
       })
       (import ./overlays/river-bedload.nix)
     ];

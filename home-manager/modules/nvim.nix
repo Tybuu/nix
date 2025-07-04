@@ -26,6 +26,8 @@
         pyright
         tinymist
         bash-language-server
+        typescript-language-server
+        vscode-langservers-extracted
       ];
 
       formatters = with pkgs; [

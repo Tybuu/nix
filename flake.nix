@@ -5,20 +5,18 @@
     # Nixpkgs
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-osu.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
     # home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.url = "github:nix-community/home-manager/";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    nvf.url = "github:notashelf/nvf";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    nvf,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -56,7 +54,6 @@
         # > Our main home-manager configuration file <
         modules = [
           ./home-manager/devices/tymid.nix
-          nvf.homeManagerModules.default
         ];
       };
       "tybuu@tyoga" = home-manager.lib.homeManagerConfiguration {
@@ -65,7 +62,6 @@
         # > Our main home-manager configuration file <
         modules = [
           ./home-manager/devices/tyoga.nix
-          nvf.homeManagerModules.default
         ];
       };
     };

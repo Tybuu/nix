@@ -7,18 +7,12 @@ toggled=$(( (toggled_output & (1 << tag_number)) != 0 ))
 focused_output=$(river-bedload -print outputs | jq -r '.[] | select(.name == "DP-2") | .focused_tags')
 focused=$(( (focused_output & (1 << tag_number)) != 0 ))
 
-echo $monitor
-echo $toggled_output
-echo $toggled
-echo $focused_output
-echo $focused
-
 
 if (( toggled )); then
   if (( focused )); then 
     riverctl focus-output "DP-2" 
     riverctl set-focused-tags 1
-    riverctl focus-output $monitor
+    riverctl focus-output "$monitor"
   else
     riverctl focus-output "DP-2" 
     riverctl set-focused-tags $(( 1 << tag_number ))
