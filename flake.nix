@@ -5,7 +5,7 @@
     # Nixpkgs
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-osu.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-osu.url = "github:nixos/nixpkgs/nixos-25.05";
 
     # Home manager
     # home-manager.url = "github:nix-community/home-manager/release-24.11";
@@ -44,13 +44,21 @@
       # Available through 'home-manager switch --flake .#username@hostname'
       "tybuu@tybeast" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs =
+          {inherit inputs outputs;}
+          // {
+            hostName = "tybeast";
+          };
         # > Our main home-manager configuration file <
         modules = [./home-manager/devices/tybeast.nix];
       };
       "tybuu@tymid" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs =
+          {inherit inputs outputs;}
+          // {
+            hostName = "tymid";
+          };
         # > Our main home-manager configuration file <
         modules = [
           ./home-manager/devices/tymid.nix
@@ -58,7 +66,11 @@
       };
       "tybuu@tyoga" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs =
+          {inherit inputs outputs;}
+          // {
+            hostName = "tyoga";
+          };
         # > Our main home-manager configuration file <
         modules = [
           ./home-manager/devices/tyoga.nix

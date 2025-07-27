@@ -1,11 +1,10 @@
 {
   pkgs,
   lib,
+  config,
+  hostName,
   ...
-}: let
-  hostName = builtins.getEnv "HOSTNAME";
-  gameYes = hostName == "tymid";
-in {
+}: {
   wayland.windowManager.hyprland = {
     settings = {
       "$mainMod" = "SUPER";
@@ -14,74 +13,91 @@ in {
       "$browser" = "firefox";
       "$menu" = "wofi --show drun";
 
-      bind = [
-        "$mainMod, T, exec, $terminal"
-        "$mainMod, F, exec, $fileManager"
-        "$mainMod, R, exec, $menu"
-        "$mainMod, B, exec, $browser"
-        # Relying on 'firefox' being in PATH and configured profile 'gedisu'
-        "$mainMod SHIFT, B, exec, firefox -P gedisu --new-window https://music.youtube.com/"
-        # Relying on 'moonlight' being in PATH
-        # Relying on 'pkill' and 'waybar' being in PATH
-        "$mainMod, W, exec, pkill waybar || waybar"
+      bind =
+        [
+          "$mainMod, T, exec, $terminal"
+          "$mainMod, F, exec, $fileManager"
+          "$mainMod, R, exec, $menu"
+          "$mainMod, B, exec, $browser"
+          "$mainMod, W, exec, pkill waybar || waybar"
+          "$mainMod SHIFT, S, exec, hyprshot -m region"
 
-        # Window Manipulation
-        "$mainMod, C, killactive,"
-        "$mainMod SHIFT, C, exec, ~/.config/hypr/kill.sh"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, S, togglesplit," # dwindle
-        "$mainMod, M, fullscreen, 1"
-        "$mainMod SHIFT, f, fullscreenstate, -1 2"
-        "$mainMod SHIFT, M, fullscreen, 0"
+          # Window Manipulation
+          "$mainMod, C, killactive,"
+          "$mainMod SHIFT, C, exec, ~/.config/hypr/kill.sh"
+          "$mainMod, V, togglefloating,"
+          "$mainMod, S, togglesplit," # dwindle
+          "$mainMod, M, fullscreen, 1"
+          "$mainMod SHIFT, f, fullscreenstate, -1 2"
+          "$mainMod SHIFT, M, fullscreen, 0"
 
-        # Focus Movement
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+          # Focus Movement
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
 
-        # Window Movement
-        "$mainMod SHIFT, left, movewindow, l"
-        "$mainMod SHIFT, right, movewindow, r"
-        "$mainMod SHIFT, up, movewindow, u"
-        "$mainMod SHIFT, down, movewindow, d"
+          # Window Movement
+          "$mainMod SHIFT, left, movewindow, l"
+          "$mainMod SHIFT, right, movewindow, r"
+          "$mainMod SHIFT, up, movewindow, u"
+          "$mainMod SHIFT, down, movewindow, d"
 
-        # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+          # Scroll through existing workspaces with mainMod + scroll
+          "$mainMod, mouse_down, split:workspace, e+1"
+          "$mainMod, mouse_up, split:workspace, e-1"
 
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
+          # Brightness controls (relying on 'brightnessctl' in PATH)
+          "$mainMod, U, exec, brightnessctl s 5%+"
+          "$mainMod, D, exec, brightnessctl s 5%-"
+        ]
+        ++ lib.flatten (builtins.genList (
+            i: let
+              key =
+                if i == 9
+                then "0"
+                else toString (i + 1);
+              ws = toString (i + 1);
+            in [
+              "$mainMod, ${key}, split:workspace, ${ws}"
+              "$mainMod SHIFT,${key}, split:movetoworkspace, ${ws}"
+            ]
+          )
+          10)
+        ++ lib.optionals (hostName == "tymid") [
+          # Switching monitors
+          "$mainMod, comma, focusmonitor, DP-1"
+          "$mainMod, period, focusmonitor, DP-2"
+          "$mainMod, slash, focusmonitor, HDMI-A-1"
 
-        # Example special workspace (scratchpad)
-        "$mainMod, E, togglespecialworkspace, music"
-        "$mainMod SHIFT, E, movetoworkspace, special:music"
+          "$mainMod SHIFT, comma, movewindow, mon:DP-1"
+          "$mainMod SHIFT, period, movewindow, mon:DP-2"
+          "$mainMod SHIFT, slash, movewindow, mon:HDMI-A-1"
 
-        # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+          # Specific binds for tymid
+          "$mainMod, Z, exec, hyprctl clients | grep \"moonlight\" || [workspace special:gaming silent] moonlight stream tybeast Desktop --1440 --game-optimization --bitrate 69000 --fps 180 --no-hdr"
+          "$mainMod, P, exec, ~/.config/hypr/music.sh"
 
-        # Brightness controls (relying on 'brightnessctl' in PATH)
-        "$mainMod, U, exec, brightnessctl s 5%+"
-        "$mainMod, D, exec, brightnessctl s 5%-"
-      ];
+          # Toggles display on DP-2
+          "$mainMod, D, exec, echo -ne '\x01' | socat - UNIX-SENDTO:/tmp/stream_temp"
+        ]
+        ++ lib.optionals (hostName == "tyoga") [
+          # Switching Monitors
+          "$mainMod, comma, focusmonitor, eDP-1"
+          "$mainMod, period, focusmonitor, DP-1"
+
+          "$mainMod SHIFT, comma, movewindow, mon:eDP-1"
+          "$mainMod SHIFT, period, movewindow, mon:DP-1"
+
+          "$mainMod, h, movefocus, l"
+          "$mainMod, l, movefocus, r"
+          "$mainMod, k, movefocus, u"
+          "$mainMod, j, movefocus, d"
+          "$mainMod SHIFT, h, movewindow, l"
+          "$mainMod SHIFT, l, movewindow, r"
+          "$mainMod SHIFT, k, movewindow, u"
+          "$mainMod SHIFT, j, movewindow, d"
+        ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = [

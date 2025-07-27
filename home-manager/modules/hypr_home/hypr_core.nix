@@ -1,9 +1,13 @@
 {
   pkgs,
   lib,
+  hostName,
   ...
 }: {
   wayland.windowManager.hyprland = {
+    plugins = with pkgs; [
+      hyprlandPlugins.hyprsplit
+    ];
     settings = {
       exec-once = [
         "hyprpaper"
@@ -115,6 +119,32 @@
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
+
+      cursor =
+        {
+          warp_on_change_workspace = 2;
+        }
+        // lib.mkIf (hostName == "tymid") {default_monitor = "DP-2";}
+        // lib.mkIf (hostName == "tyoga") {default_monitor = "eDP-1";};
+
+      monitor =
+        if hostName == "tymid"
+        then [
+          "DP-1, 1920x1080@144, 0x0, 1"
+          "DP-2, 2560x1440@180, 1920x-180, 1,bitdepth,10"
+          "HDMI-A-1, preferred, 4480x0, 1"
+        ]
+        else if hostName == "tyoga"
+        then [
+          "eDP-1, 1920x1200, 768x1728, 1.25"
+          "DP-1, 3840x2160, 0x0, 1.25"
+        ]
+        else [];
+      experimental =
+        {}
+        // lib.mkIf (hostName == "tymid") {
+          xx_color_management_v4 = true;
+        };
     };
   };
 }

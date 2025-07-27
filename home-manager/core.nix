@@ -93,6 +93,7 @@
     lswt
     wlr-randr
     chafa
+    qutebrowser
   ];
   home.file = {
     ".config/river" = {
@@ -100,6 +101,7 @@
       recursive = true;
     };
   };
+
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.zoxide.enable = true;

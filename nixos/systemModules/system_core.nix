@@ -53,7 +53,10 @@
   hardware.rtl-sdr.enable = true;
   hardware.hackrf.enable = true;
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
   programs.river.enable = true;
   boot.loader = {
     efi = {
@@ -109,7 +112,7 @@
       PermitRootLogin = "no";
       # Opinionated: use keys only.
       # Remove if you want to SSH using passwords
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
     };
   };
   hardware.graphics = {
@@ -130,6 +133,7 @@
     };
   };
 
+  hardware.i2c.enable = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = [];
 

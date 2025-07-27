@@ -6,7 +6,8 @@
         layer = "top";
         position = "top";
         modules-left = [
-          "river/tags"
+          # "river/tags"
+          "hyprland/workspaces"
         ];
         modules-center = [
           "custom/music"
@@ -24,7 +25,7 @@
           on-scroll-up = "hyprctl dispatch workspace e-1";
           on-scroll-down = "hyprctl dispatch workspace e+1";
           format = "{icon}";
-          all-outputs = true;
+          all-outputs = false;
           all = false;
           format-icons = {
             "1" = "󰖟";
@@ -35,6 +36,22 @@
             "6" = "󰺷";
             "7" = "";
             "8" = "󰊪";
+            "11" = "󰖟";
+            "12" = "";
+            "13" = "";
+            "14" = "";
+            "15" = "";
+            "16" = "󰺷";
+            "17" = "";
+            "18" = "󰊪";
+            "21" = "󰖟";
+            "22" = "";
+            "23" = "";
+            "24" = "";
+            "25" = "";
+            "26" = "󰺷";
+            "27" = "";
+            "28" = "󰊪";
             default = "";
           };
         };
