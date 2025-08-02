@@ -8,7 +8,7 @@
   wayland.windowManager.hyprland = {
     settings = {
       "$mainMod" = "SUPER";
-      "$terminal" = "foot";
+      "$terminal" = "kitty";
       "$fileManager" = "nautilus";
       "$browser" = "firefox";
       "$menu" = "wofi --show drun";

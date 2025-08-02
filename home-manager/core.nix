@@ -94,6 +94,7 @@
     wlr-randr
     chafa
     qutebrowser
+    go
   ];
   home.file = {
     ".config/river" = {

@@ -28,6 +28,7 @@
         bash-language-server
         typescript-language-server
         vscode-langservers-extracted
+        gopls
       ];
 
       formatters = with pkgs; [
