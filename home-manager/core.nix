@@ -101,6 +101,10 @@
       source = ./dotfiles/river;
       recursive = true;
     };
+    ".config/hypr/scripts" = {
+      source = ./dotfiles/hypr_scripts;
+      recursive = true;
+    };
   };
 
   # Enable home-manager and git
