@@ -8,7 +8,7 @@
   wayland.windowManager.hyprland = {
     settings = {
       "$mainMod" = "SUPER";
-      "$terminal" = "kitty";
+      "$terminal" = "foot";
       "$fileManager" = "nautilus";
       "$browser" = "firefox";
       "$menu" = "wofi --show drun";
@@ -24,7 +24,7 @@
 
           # Window Manipulation
           "$mainMod, C, killactive,"
-          "$mainMod SHIFT, C, exec, ~/.config/hypr/kill.sh"
+          "$mainMod SHIFT, C, exec, ~/.config/hypr/scripts/kill.sh"
           "$mainMod, V, togglefloating,"
           "$mainMod, S, togglesplit," # dwindle
           "$mainMod, M, fullscreen, 1"
@@ -48,8 +48,6 @@
           "$mainMod, mouse_up, split:workspace, e-1"
 
           # Brightness controls (relying on 'brightnessctl' in PATH)
-          "$mainMod, U, exec, brightnessctl s 5%+"
-          "$mainMod, D, exec, brightnessctl s 5%-"
         ]
         ++ lib.flatten (builtins.genList (
             i: let
@@ -76,7 +74,7 @@
 
           # Specific binds for tymid
           "$mainMod, Z, exec, hyprctl clients | grep \"moonlight\" || [workspace special:gaming silent] moonlight stream tybeast Desktop --1440 --game-optimization --bitrate 69000 --fps 180 --no-hdr"
-          "$mainMod, P, exec, ~/.config/hypr/music.sh"
+          "$mainMod, P, exec, ~/.config/hypr/scripts/music.sh"
 
           # Toggles display on DP-2
           "$mainMod, D, exec, echo -ne '\x01' | socat - UNIX-SENDTO:/tmp/stream_temp"
@@ -84,10 +82,12 @@
         ++ lib.optionals (hostName == "tyoga") [
           # Switching Monitors
           "$mainMod, comma, focusmonitor, eDP-1"
-          "$mainMod, period, focusmonitor, DP-1"
+          "$mainMod, period, focusmonitor, HDMI-A-1"
+          "$mainMod, slash, focusmonitor, DP-2"
 
           "$mainMod SHIFT, comma, movewindow, mon:eDP-1"
-          "$mainMod SHIFT, period, movewindow, mon:DP-1"
+          "$mainMod SHIFT, period, movewindow, mon:HDMI-A-1"
+          "$mainMod SHIFT, slash, movewindow, mon:DP-2"
 
           "$mainMod, h, movefocus, l"
           "$mainMod, l, movefocus, r"
@@ -97,6 +97,12 @@
           "$mainMod SHIFT, l, movewindow, r"
           "$mainMod SHIFT, k, movewindow, u"
           "$mainMod SHIFT, j, movewindow, d"
+
+          "$mainMod SHIFT, U, exec, brightnessctl s 5%+"
+          "$mainMod, U, exec, brightnessctl s 5%-"
+          "$mainMod, D, exec, echo -ne '\x01' | socat - UNIX-SENDTO:/tmp/stream_temp"
+
+          "$mainMod, P, exec, ~/.config/hypr/scripts/music.sh"
         ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging

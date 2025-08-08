@@ -95,6 +95,7 @@
     chafa
     qutebrowser
     go
+    socat
   ];
   home.file = {
     ".config/river" = {

@@ -50,8 +50,8 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware.bluetooth.enable = true;
-  hardware.rtl-sdr.enable = true;
-  hardware.hackrf.enable = true;
+  # hardware.rtl-sdr.enable = true;
+  # hardware.hackrf.enable = true;
 
   programs.hyprland = {
     enable = true;
@@ -133,7 +133,6 @@
     };
   };
 
-  hardware.i2c.enable = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = [];
 
