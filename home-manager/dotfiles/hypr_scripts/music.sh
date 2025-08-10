@@ -3,7 +3,7 @@
 toggled=$(hyprctl clients | grep "special:music")
 monitor=$(hyprctl activeworkspace | head -n 1 | sed -E 's/^workspace.*monitor (.*):/\1/')
 
-music_monitor="DP-2"
+music_monitor="HDMI-A-1"
 
 if [[ -z $toggled ]]; then
     echo not toggled

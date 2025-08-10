@@ -82,12 +82,10 @@
         ++ lib.optionals (hostName == "tyoga") [
           # Switching Monitors
           "$mainMod, comma, focusmonitor, eDP-1"
-          "$mainMod, period, focusmonitor, HDMI-A-1"
-          "$mainMod, slash, focusmonitor, DP-2"
+          "$mainMod, perido, focusmonitor, DP-2"
 
           "$mainMod SHIFT, comma, movewindow, mon:eDP-1"
-          "$mainMod SHIFT, period, movewindow, mon:HDMI-A-1"
-          "$mainMod SHIFT, slash, movewindow, mon:DP-2"
+          "$mainMod SHIFT, period, movewindow, mon:DP-2"
 
           "$mainMod, h, movefocus, l"
           "$mainMod, l, movefocus, r"
@@ -100,9 +98,6 @@
 
           "$mainMod SHIFT, U, exec, brightnessctl s 5%+"
           "$mainMod, U, exec, brightnessctl s 5%-"
-          "$mainMod, D, exec, echo -ne '\x01' | socat - UNIX-SENDTO:/tmp/stream_temp"
-
-          "$mainMod, P, exec, ~/.config/hypr/scripts/music.sh"
         ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging

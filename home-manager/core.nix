@@ -16,6 +16,7 @@
     ./modules/starship.nix
     ./modules/foot.nix
     ./modules/hyprland.nix
+    ./modules/neovide.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
@@ -87,7 +88,6 @@
     ]))
     typst
     rnote
-    neovide
     river-bedload
     jq
     lswt
