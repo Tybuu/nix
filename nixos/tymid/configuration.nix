@@ -30,6 +30,12 @@
   };
   systemd.services.NetworkManager-wait-online.enable = false;
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opentabletdriver.enable = true;
@@ -83,7 +89,7 @@
     after = ["network.target"];
     wantedBy = ["multi-user.target"];
     serviceConfig = {
-      ExecStart = "/home/tybuu/projects/link/target/release/keyboard-link";
+      ExecStart = "/home/tybuu/projects/Keyboards/tybeast_he/link/target/release/keyboard-link";
       Restart = "always";
     };
   };

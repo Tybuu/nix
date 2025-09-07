@@ -84,6 +84,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+    wireplumber.enable = true;
   };
 
   fonts.packages = with pkgs; [
@@ -123,12 +124,8 @@
   xdg = {
     portal = {
       enable = true;
-      xdgOpenUsePortal = true;
-      config = {
-        common.default = ["gtk"];
-      };
       extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-hyprland
       ];
     };
   };
