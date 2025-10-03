@@ -82,10 +82,10 @@
         ++ lib.optionals (hostName == "tyoga") [
           # Switching Monitors
           "$mainMod, comma, focusmonitor, eDP-1"
-          "$mainMod, perido, focusmonitor, DP-2"
+          "$mainMod, period, focusmonitor, DP-1"
 
           "$mainMod SHIFT, comma, movewindow, mon:eDP-1"
-          "$mainMod SHIFT, period, movewindow, mon:DP-2"
+          "$mainMod SHIFT, period, movewindow, mon:DP-1"
 
           "$mainMod, h, movefocus, l"
           "$mainMod, l, movefocus, r"
@@ -96,8 +96,8 @@
           "$mainMod SHIFT, k, movewindow, u"
           "$mainMod SHIFT, j, movewindow, d"
 
-          "$mainMod SHIFT, U, exec, brightnessctl s 5%+"
-          "$mainMod, U, exec, brightnessctl s 5%-"
+          "$mainMod, U, exec, brightnessctl s 5%+"
+          "$mainMod, D, exec, brightnessctl s 5%-"
         ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging

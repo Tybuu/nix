@@ -136,9 +136,8 @@
         ]
         else if hostName == "tyoga"
         then [
-          "eDP-1, 1920x1200, 0x0, 1.25"
-          "DP-2, 1920x1080@144, 4096x0, 1"
-          "HDMI-A-1, 2560x1440@144, 1536x0, 1, bitdepth, 10"
+          "eDP-1, 1920x1200, 0x1440, 1.25"
+          "DP-1, 3840x2160, 0x0, 1.5"
         ]
         else [];
       experimental =
