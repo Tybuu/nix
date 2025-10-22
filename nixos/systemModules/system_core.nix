@@ -7,6 +7,9 @@
   pkgs,
   ...
 }: {
+  imports = [
+    inputs.niri.nixosModules.niri
+  ];
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -19,6 +22,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      inputs.niri.overlays.niri
     ];
     # Configure your nixpkgs instance
     config = {
@@ -57,7 +61,13 @@
     enable = true;
     xwayland.enable = true;
   };
+
   programs.river.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
+
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
@@ -126,7 +136,25 @@
       enable = true;
       extraPortals = [
         pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.xdg-desktop-portal-gtk
+        # pkgs.xdg-desktop-portal-wlr
       ];
+      config = {
+        hyprland = {
+          default = [
+            "hyprland"
+          ];
+        };
+        niri = {
+          default = [
+            "gtk"
+            "gnome"
+          ];
+          "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
+          "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
+        };
+      };
     };
   };
 

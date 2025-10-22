@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  hostName,
   ...
 }: {
   imports = [
@@ -17,6 +18,7 @@
     ./modules/foot.nix
     ./modules/hyprland.nix
     ./modules/neovide.nix
+    # ./modules/niri.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
@@ -81,6 +83,7 @@
     unzip
     google-chrome
     slurp
+    xwayland-satellite
     (pkgs.python3.withPackages (python-pkgs: [
       python-pkgs.numpy
       python-pkgs.matplotlib
@@ -103,6 +106,11 @@
       source = ./dotfiles/river;
       recursive = true;
     };
+    ".config/niri" = {
+      source = ./dotfiles/home_niri;
+      recursive = true;
+    };
+    ".config/niri/specific.kdl".source = ./dotfiles/home_niri/${hostName}.kdl;
     ".config/hypr/scripts" = {
       source = ./dotfiles/hypr_scripts;
       recursive = true;
