@@ -7,7 +7,9 @@
   pkgs,
   hostName,
   ...
-}: {
+}: let
+  dotfiles = config.lib.file.mkOutOfStoreSymlink "/home/tybuu/.config/nix/home-manager/dotfiles";
+in {
   imports = [
     ./modules/nvim.nix
     ./modules/hyprpaper.nix
@@ -18,7 +20,6 @@
     ./modules/foot.nix
     ./modules/hyprland.nix
     ./modules/neovide.nix
-    # ./modules/niri.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
@@ -106,11 +107,11 @@
       source = ./dotfiles/river;
       recursive = true;
     };
-    ".config/niri" = {
-      source = ./dotfiles/home_niri;
-      recursive = true;
-    };
-    ".config/niri/specific.kdl".source = ./dotfiles/home_niri/${hostName}.kdl;
+    # ".config/niri" = {
+    #   source = "${dotfiles}/home_niri";
+    #   recursive = true;
+    # };
+    # ".config/niri/specific.kdl".source = "${dotfiles}/home_niri/${hostName}.kdl";
     ".config/hypr/scripts" = {
       source = ./dotfiles/hypr_scripts;
       recursive = true;

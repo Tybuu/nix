@@ -8,7 +8,7 @@
   ...
 }: {
   imports = [
-    inputs.niri.nixosModules.niri
+    # inputs.niri.nixosModules.niri
   ];
   nixpkgs = {
     # You can add overlays here
@@ -22,7 +22,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-      inputs.niri.overlays.niri
+      # inputs.niri.overlays.niri
     ];
     # Configure your nixpkgs instance
     config = {
@@ -63,10 +63,10 @@
   };
 
   programs.river.enable = true;
-  programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable;
-  };
+  # programs.niri = {
+  #   enable = true;
+  #   package = pkgs.niri-unstable;
+  # };
 
   boot.loader = {
     efi = {
@@ -146,14 +146,14 @@
             "hyprland"
           ];
         };
-        niri = {
-          default = [
-            "gtk"
-            "gnome"
-          ];
-          "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
-          "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
-        };
+        # niri = {
+        #   default = [
+        #     "gtk"
+        #     "gnome"
+        #   ];
+        # "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
+        # "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
+        # };
       };
     };
   };

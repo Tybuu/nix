@@ -1,3 +1,14 @@
+
+workspace "burner" {
+  open-on-output "HDMI-A-1"
+}
+
+workspace "music" {
+  open-on-output "HDMI-A-1"
+  layout {
+    default-column-width { proportion 1.0; }
+  }
+}
 output "DP-2" {
     // Uncomment this line to disable this output.
     // off

@@ -297,13 +297,6 @@ window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
-workspace "burner" {
-  open-on-output "HDMI-A-1"
-}
-
-workspace "music" {
-  open-on-output "HDMI-A-1"
-}
 
 binds {
     // Most actions that you can bind here can also be invoked programmatically with
