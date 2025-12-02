@@ -131,7 +131,7 @@
         if hostName == "tymid"
         then [
           "DP-1, 1920x1080@144, 0x0, 1"
-          "DP-2, 2560x1440@180, 1920x-180, 1,bitdepth,10"
+          "DP-2, 2560x1440@180, 1920x-180, 1"
           "HDMI-A-1, preferred, 4480x0, 1"
         ]
         else if hostName == "tyoga"
