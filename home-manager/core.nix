@@ -84,6 +84,8 @@ in {
     unzip
     google-chrome
     slurp
+    gleam
+    erlang
     xwayland-satellite
     (pkgs.python3.withPackages (python-pkgs: [
       python-pkgs.numpy

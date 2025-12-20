@@ -17,7 +17,7 @@
         [
           "$mainMod, T, exec, $terminal"
           "$mainMod, F, exec, $fileManager"
-          "$mainMod, R, exec, $menu"
+          "$mainMod, E, exec, $menu"
           "$mainMod, B, exec, $browser"
           "$mainMod, W, exec, pkill waybar || waybar"
           "$mainMod SHIFT, S, exec, hyprshot -m region"
@@ -74,7 +74,7 @@
 
           # Specific binds for tymid
           "$mainMod, Z, exec, hyprctl clients | grep \"moonlight\" || [workspace special:gaming silent] moonlight stream tybeast Desktop --1440 --game-optimization --bitrate 69000 --fps 180 --no-hdr"
-          "$mainMod, P, exec, ~/.config/hypr/scripts/music.sh"
+          "$mainMod, R, exec, ~/.config/hypr/scripts/music.sh"
 
           # Toggles display on DP-2
           "$mainMod, D, exec, echo -ne '\x01' | socat - UNIX-SENDTO:/tmp/stream_temp"
