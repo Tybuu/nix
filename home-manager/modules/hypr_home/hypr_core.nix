@@ -25,7 +25,7 @@
         "col.active_border" = "rgb(7da2e1) rgb(f2dbab) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = false;
-        allow_tearing = false;
+        allow_tearing = true;
         layout = "dwindle";
       };
 
@@ -111,8 +111,10 @@
         }
       ];
 
-      windowrulev2 = [
+      windowrule = [
         "suppressevent maximize, class:.*"
+        "immediate, class:^(com.moonlight_stream.Moonlight)$"
+        "immediate, class:^(osu!)$"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
 
