@@ -126,6 +126,9 @@ ATTRS{idVendor}=="303a", ATTRS{idProduct}=="1001", TAG+="uaccess"
 # Espressif USB Bridge
 ATTRS{idVendor}=="303a", ATTRS{idProduct}=="1002", TAG+="uaccess"
 
+# GOWIN Kiwi 1P5 FPGA JTAG
+ATTRS{idVendor}=="33aa", ATTRS{idProduct}=="0120", TAG+="uaccess"
+
 # CMSIS-DAP compatible adapters
 ATTRS{product}=="*CMSIS-DAP*", TAG+="uaccess"
 

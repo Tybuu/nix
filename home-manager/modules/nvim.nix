@@ -29,6 +29,7 @@
         typescript-language-server
         vscode-langservers-extracted
         gopls
+        verible
       ];
 
       formatters = with pkgs; [
