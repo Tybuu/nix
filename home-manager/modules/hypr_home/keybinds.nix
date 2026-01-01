@@ -79,6 +79,31 @@
           # Toggles display on DP-2
           "$mainMod, D, exec, echo -ne '\x01' | socat - UNIX-SENDTO:/tmp/stream_temp"
         ]
+        ++ lib.optionals (hostName == "tybeast") [
+          # Switching monitors
+          "$mainMod, comma, focusmonitor, DP-2"
+          "$mainMod, period, focusmonitor, DP-1"
+          "$mainMod, slash, focusmonitor, HDMI-A-2"
+
+          "$mainMod SHIFT, comma, movewindow, mon:DP-2"
+          "$mainMod SHIFT, period, movewindow, mon:DP-1"
+          "$mainMod SHIFT, slash, movewindow, mon:HDMI-A-2"
+
+          "$mainMod, Z, exec, hyprctl clients | grep \"moonlight\" || [workspace special:gaming silent] moonlight stream tybeast Desktop --1440 --game-optimization --bitrate 69000 --fps 180 --no-hdr"
+          "$mainMod, R, exec, ~/.config/hypr/scripts/music.sh"
+
+          "$mainMod, h, movefocus, l"
+          "$mainMod, l, movefocus, r"
+          "$mainMod, k, movefocus, u"
+          "$mainMod, j, movefocus, d"
+          "$mainMod SHIFT, h, movewindow, l"
+          "$mainMod SHIFT, l, movewindow, r"
+          "$mainMod SHIFT, k, movewindow, u"
+          "$mainMod SHIFT, j, movewindow, d"
+
+          # Toggles display on DP-2
+          "$mainMod, D, exec, echo -ne '\x01' | socat - UNIX-SENDTO:/tmp/stream_temp"
+        ]
         ++ lib.optionals (hostName == "tyoga") [
           # Switching Monitors
           "$mainMod, comma, focusmonitor, eDP-1"

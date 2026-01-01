@@ -115,6 +115,7 @@
         "suppressevent maximize, class:.*"
         "immediate, class:^(com.moonlight_stream.Moonlight)$"
         "immediate, class:^(osu!)$"
+        "immediate, class:^(steam_app.*)$"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
 
@@ -136,6 +137,12 @@
         then [
           "eDP-1, 1920x1200, 0x1440, 1.25"
           "DP-1, 3840x2160, 0x0, 1.5"
+        ]
+        else if hostName == "tybeast"
+        then [
+          "DP-2, 1920x1080@144, -1920x0, 1"
+          "DP-1, 2560x1440@180, 0x0, 1"
+          "HDMI-A-2, preferred, 2560x0, 1"
         ]
         else [];
       experimental =

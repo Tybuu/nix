@@ -18,6 +18,7 @@
   networking = {
     hostName = "tybeast";
     networkmanager.enable = true;
+    firewall.allowedTCPPorts = [8188];
     interfaces.enp4s0 = {
       useDHCP = false;
       ipv4.addresses = [
@@ -29,10 +30,19 @@
     };
   };
 
+  fileSystems."/mnt/disk2" = {
+    device = "/dev/disk/by-uuid/b84b09a0-bb60-47b9-85df-ce24aa1ee7ab";
+    fsType = "ext4";
+    options = ["nofail" "user" "exec"];
+  };
+
+  services.flatpak.enable = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.daemon.enable = true;
+  hardware.graphics.enable32Bit = true;
+
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
@@ -65,7 +75,7 @@
 
   environment.systemPackages = with pkgs; [
     wineWowPackages.waylandFull
-    protonup
+    protonup-ng
     gamescope
   ];
 
@@ -76,12 +86,20 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
+      PermitRootLogin = "no";
+    };
+  };
+
   systemd.services.link = {
     description = "Keyboard Link Service";
     after = ["network.target"];
     wantedBy = ["multi-user.target"];
     serviceConfig = {
-      ExecStart = "/home/tybuu/projects/link/target/release/keyboard-link";
+      ExecStart = "/home/tybuu/projects/Keyboards-firmware/tybeast_he/link/target/release/keyboard-link";
       Restart = "always";
     };
   };
