@@ -29,12 +29,15 @@
       ];
     };
   };
-
-  fileSystems."/mnt/disk2" = {
-    device = "/dev/disk/by-uuid/b84b09a0-bb60-47b9-85df-ce24aa1ee7ab";
-    fsType = "ext4";
-    options = ["nofail" "user" "exec"];
+  environment.variables = {
+    "__GL_SHADER_DISK_CACHE_SIZE" = "12000000000";
   };
+
+  # fileSystems."/mnt/disk2" = {
+  #   device = "/dev/disk/by-uuid/b84b09a0-bb60-47b9-85df-ce24aa1ee7ab";
+  #   fsType = "ext4";
+  #   options = ["nofail" "user" "exec"];
+  # };
 
   services.flatpak.enable = true;
   # Load nvidia driver for Xorg and Wayland

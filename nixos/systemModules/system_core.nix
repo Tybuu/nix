@@ -130,6 +130,7 @@
   };
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
 
   # Enable screensharing
@@ -167,6 +168,15 @@
     xorg.libXcursor
     xorg.libXrandr
     xorg.libXi
+
+    glib
+    gtk3
+    pango
+    cairo
+    gdk-pixbuf
+    at-spi2-core
+    dbus
+    libxml2
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
