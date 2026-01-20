@@ -112,7 +112,7 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel"];
+      extraGroups = ["wheel" "gamemode" "networkmanager"];
     };
   };
 
@@ -168,15 +168,6 @@
     xorg.libXcursor
     xorg.libXrandr
     xorg.libXi
-
-    glib
-    gtk3
-    pango
-    cairo
-    gdk-pixbuf
-    at-spi2-core
-    dbus
-    libxml2
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

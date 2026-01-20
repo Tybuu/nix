@@ -15,29 +15,40 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32768;
+    }
+  ];
   networking = {
     hostName = "tybeast";
-    networkmanager.enable = true;
-    firewall.allowedTCPPorts = [8188];
-    interfaces.enp4s0 = {
-      useDHCP = false;
-      ipv4.addresses = [
-        {
-          address = "192.168.10.3";
-          prefixLength = 24;
-        }
+    networkmanager = {
+      enable = true;
+      plugins = with pkgs; [
+        networkmanager-openconnect
       ];
     };
+    firewall.allowedTCPPorts = [8188];
+    # interfaces.enp4s0 = {
+    #   useDHCP = false;
+    #   ipv4.addresses = [
+    #     {
+    #       address = "192.168.10.3";
+    #       prefixLength = 24;
+    #     }
+    #   ];
+    # };
   };
   environment.variables = {
     "__GL_SHADER_DISK_CACHE_SIZE" = "12000000000";
   };
 
-  # fileSystems."/mnt/disk2" = {
-  #   device = "/dev/disk/by-uuid/b84b09a0-bb60-47b9-85df-ce24aa1ee7ab";
-  #   fsType = "ext4";
-  #   options = ["nofail" "user" "exec"];
-  # };
+  fileSystems."/mnt/disk2" = {
+    device = "/dev/disk/by-uuid/391fc4cc-3bf7-40c2-bb3b-030bf78ed485";
+    fsType = "ext4";
+    options = ["nofail" "user" "exec"];
+  };
 
   services.flatpak.enable = true;
   # Load nvidia driver for Xorg and Wayland
@@ -76,10 +87,55 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  programs.gamemode.enable = true;
   environment.systemPackages = with pkgs; [
     wineWowPackages.waylandFull
+    webkitgtk_6_0
     protonup-ng
     gamescope
+    vulkan-tools
+    (lutris.override {
+      extraPkgs = pkgs: [
+        gamemode
+        mangohud
+      ];
+
+      extraLibraries = pkgs: [
+        stdenv.cc.cc
+        zlib
+        fuse3
+        icu
+        nss
+        openssl
+        curl
+        expat
+        libglvnd
+        vulkan-loader
+        xorg.libX11
+        xorg.libXcursor
+        xorg.libXrandr
+        xorg.libXi
+        mesa
+        libGL
+        libxkbcommon
+
+        glib
+        gtk3
+        pango
+        cairo
+        gdk-pixbuf
+        at-spi2-core
+        dbus
+        libxml2
+
+        gst_all_1.gstreamer
+        gst_all_1.gst-plugins-base
+        gst_all_1.gst-plugins-good
+        gst_all_1.gst-plugins-bad
+        gst_all_1.gst-plugins-ugly
+        gst_all_1.gst-libav
+      ];
+    })
   ];
 
   programs.steam = {

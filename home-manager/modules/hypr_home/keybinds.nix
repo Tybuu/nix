@@ -89,7 +89,7 @@
           "$mainMod SHIFT, period, movewindow, mon:DP-1"
           "$mainMod SHIFT, slash, movewindow, mon:HDMI-A-2"
 
-          "$mainMod, Z, exec, hyprctl clients | grep \"moonlight\" || [workspace special:gaming silent] moonlight stream tybeast Desktop --1440 --game-optimization --bitrate 69000 --fps 180 --no-hdr"
+          "$mainMod, Z, exec, ~/.config/hypr/scripts/scratch.sh"
           "$mainMod, R, exec, ~/.config/hypr/scripts/music.sh"
 
           "$mainMod, h, movefocus, l"
