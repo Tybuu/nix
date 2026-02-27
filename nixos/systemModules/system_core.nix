@@ -58,7 +58,7 @@
   hardware.bluetooth.enable = true;
   # hardware.rtl-sdr.enable = true;
   # hardware.hackrf.enable = true;
-
+  virtualisation.vswitch.enable = true;
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -87,8 +87,11 @@
       enable = true;
     };
   };
+  environment.systemPackages = with pkgs; [
+    mininet
+    openvswitch
+  ];
   services.udisks2.enable = true;
-
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -112,7 +115,7 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel" "gamemode" "networkmanager"];
+      extraGroups = ["libvirtd" "wheel" "vboxsf" "vboxusers" "gamemode" "networkmanager"];
     };
   };
 
