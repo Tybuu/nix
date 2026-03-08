@@ -42,6 +42,7 @@
   };
   environment.variables = {
     "__GL_SHADER_DISK_CACHE_SIZE" = "12000000000";
+    "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP" = "1";
   };
 
   fileSystems."/mnt/disk2" = {

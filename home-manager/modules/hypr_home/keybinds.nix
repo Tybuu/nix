@@ -44,8 +44,8 @@
           "$mainMod SHIFT, down, movewindow, d"
 
           # Scroll through existing workspaces with mainMod + scroll
-          "$mainMod, mouse_down, split:workspace, e+1"
-          "$mainMod, mouse_up, split:workspace, e-1"
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
 
           # Brightness controls (relying on 'brightnessctl' in PATH)
         ]
@@ -57,8 +57,8 @@
                 else toString (i + 1);
               ws = toString (i + 1);
             in [
-              "$mainMod, ${key}, split:workspace, ${ws}"
-              "$mainMod SHIFT,${key}, split:movetoworkspace, ${ws}"
+              "$mainMod, ${key}, workspace, ${ws}"
+              "$mainMod SHIFT,${key}, movetoworkspace, ${ws}"
             ]
           )
           10)

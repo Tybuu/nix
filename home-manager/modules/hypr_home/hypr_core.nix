@@ -6,7 +6,7 @@
 }: {
   wayland.windowManager.hyprland = {
     plugins = with pkgs; [
-      hyprlandPlugins.hyprsplit
+      # hyprlandPlugins.hyprsplit
     ];
     settings = {
       exec-once = [
@@ -76,6 +76,18 @@
         ];
       };
 
+      workspace = [
+        "1, monitor:DP-2"
+        "2, monitor:DP-1"
+        "3, monitor:HDMI-A-2"
+        "4, monitor:DP-2"
+        "5, monitor:DP-1"
+        "6, monitor:HDMI-A-2"
+        "7, monitor:DP-2"
+        "8, monitor:DP-1"
+        "9, monitor:HDMI-A-2"
+      ];
+
       dwindle = {
         pseudotile = true;
         preserve_split = true;
@@ -112,11 +124,12 @@
       ];
 
       windowrule = [
-        "suppressevent maximize, class:.*"
-        "immediate, class:^(com.moonlight_stream.Moonlight)$"
-        "immediate, class:^(osu!)$"
-        "immediate, class:^(steam_app.*)$"
-        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+        "match:class .*, suppress_event maximize"
+        "match:class ^(com.moonlight_stream.Moonlight)$, immediate on"
+        "match:class ^(osu!)$, immediate on"
+        "match:class ^(steam_app.*)$, immediate on"
+        "match:class ^(steam_app.*)$, fullscreen_state 2 2"
+        "match:class ^$, match:title ^$, match:xwayland 1, match:float 1, match:fullscreen 0, match:pin 0, no_initial_focus on"
       ];
 
       cursor =

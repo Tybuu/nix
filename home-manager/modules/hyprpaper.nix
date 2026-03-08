@@ -9,7 +9,10 @@
       preload = [
         "~/.config/nix/home-manager/wallpaper.png"
       ];
-      wallpaper = [", ~/.config/nix/home-manager/wallpaper.png"];
+      wallpaper = {
+        monitor = "";
+        path = "~/.config/nix/home-manager/wallpaper.png";
+      };
     };
   };
 }

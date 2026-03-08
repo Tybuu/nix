@@ -37,7 +37,7 @@ in {
           config.allowUnfree = true;
         };
       })
-      (import ./overlays/river-bedload.nix)
+      # (import ./overlays/river-bedload.nix)
     ];
     # Configure your nixpkgs instance
     config = {
@@ -81,6 +81,7 @@ in {
     gcc
     btop
     usbutils
+    nvitop
     unzip
     google-chrome
     slurp
