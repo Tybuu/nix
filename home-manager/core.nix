@@ -127,8 +127,10 @@ in {
   programs.zoxide.enableFishIntegration = true;
   programs.git = {
     enable = true;
-    userName = "tybuu";
-    userEmail = "tybuu1234@gmail.com";
+    settings.user = {
+      name = "tybuu";
+      email = "tybuu1234@gmail.com";
+    };
   };
   programs.direnv = {
     enable = true;
