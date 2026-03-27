@@ -90,10 +90,9 @@
 
   programs.gamemode.enable = true;
   environment.systemPackages = with pkgs; [
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     webkitgtk_6_0
     protonup-ng
-    gamescope
     vulkan-tools
     (lutris.override {
       extraPkgs = pkgs: [
@@ -112,10 +111,10 @@
         expat
         libglvnd
         vulkan-loader
-        xorg.libX11
-        xorg.libXcursor
-        xorg.libXrandr
-        xorg.libXi
+        libx11
+        libxcursor
+        libxrandr
+        libxi
         mesa
         libGL
         libxkbcommon
@@ -139,6 +138,10 @@
     })
   ];
 
+  programs.gamescope = {
+    enable = true;
+    #capSysNice = true;
+  };
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

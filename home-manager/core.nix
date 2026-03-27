@@ -37,7 +37,6 @@ in {
           config.allowUnfree = true;
         };
       })
-      # (import ./overlays/river-bedload.nix)
     ];
     # Configure your nixpkgs instance
     config = {
@@ -81,6 +80,7 @@ in {
     gcc
     btop
     usbutils
+    swww
     nvitop
     unzip
     google-chrome
@@ -110,11 +110,11 @@ in {
       source = ./dotfiles/river;
       recursive = true;
     };
-    # ".config/niri" = {
-    #   source = "${dotfiles}/home_niri";
-    #   recursive = true;
-    # };
-    # ".config/niri/specific.kdl".source = "${dotfiles}/home_niri/${hostName}.kdl";
+    ".config/niri" = {
+      source = ./dotfiles/home_niri;
+      recursive = true;
+    };
+    ".config/niri/specific.kdl".source = ./dotfiles/home_niri/${hostName}.kdl;
     ".config/hypr/scripts" = {
       source = ./dotfiles/hypr_scripts;
       recursive = true;
@@ -143,8 +143,10 @@ in {
       package = pkgs.gnome-themes-extra;
       name = "Adwaita-dark";
     };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
-
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   home.pointerCursor = {
     gtk.enable = true;
     package = pkgs.bibata-cursors;

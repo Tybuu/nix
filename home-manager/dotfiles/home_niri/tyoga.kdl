@@ -1,21 +1,10 @@
-
-workspace "burner" {
-  open-on-output "HDMI-A-1"
-}
-
-workspace "music" {
-  open-on-output "HDMI-A-1"
-  layout {
-    default-column-width { proportion 1.0; }
-  }
-}
-output "DP-2" {
+output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
 
-    mode "2560x1440@180"
+    mode "1920x1200"
 
-    scale 1
+    scale 1.25
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -30,16 +19,16 @@ output "DP-2" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1920 y=0
+    position x=0 y=1440
 }
 
 output "DP-1" {
     // Uncomment this line to disable this output.
     // off
 
-    mode "1920x1080@144.001"
+    mode "3840x2160"
 
-    scale 1
+    scale 1.5
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -57,39 +46,10 @@ output "DP-1" {
     position x=0 y=0
 }
 
-output "HDMI-A-1" {
-    // Uncomment this line to disable this output.
-    // off
-
-    mode "1920x1080"
-
-    scale 1
-
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
-
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    position x=4480 y=0
-}
-
 binds {
-    Mod+P { spawn "~/.config/niri/music.sh";}
-    Mod+D  {spawn-sh "echo -ne '\\x01' | socat - UNIX-SENDTO:/tmp/stream_temp"; }
+    Mod+Comma {focus-monitor "eDP-1";}
+    Mod+Period {focus-monitor "DP-1"; }
 
-    Mod+Comma {focus-monitor "DP-1";}
-    Mod+Period {focus-monitor "DP-2"; }
-    Mod+Slash {focus-monitor "HDMI-A-1"; }
-
-    Mod+Shift+Comma {move-column-to-monitor "DP-1";}
-    Mod+Shift+Period {move-column-to-monitor "DP-2"; }
-    Mod+Shift+Slash {move-column-to-monitor "HDMI-A-1"; }
+    Mod+Shift+Comma {move-column-to-monitor "eDP-1";}
+    Mod+Shift+Period {move-column-to-monitor "DP-1"; }
 }

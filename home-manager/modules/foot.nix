@@ -4,21 +4,55 @@
   config,
   ...
 }: let
-  catppuccinDrv = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/catppuccin/foot/009cd57bd3491c65bb718a269951719f94224eb7/catppuccin-mocha.conf";
-    hash = "sha256-plQ6Vge6DDLj7cBID+DRNv4b8ysadU2Lnyeemus9nx8=";
-  };
+  # catppuccinDrv = pkgs.fetchurl {
+  #   url = "https://raw.githubusercontent.com/catppuccin/foot/8d263e0e6b58a6b9ea507f71e4dbf6870aaf8507/themes/catppuccin-mocha.ini";
+  #   hash = "sha256-rVWISDKhJfH1mbEkFEQ6JSq3fFmZk86EJgKS694LbOs=";
+  # };
 in {
   programs.foot = {
     enable = true;
     # enableFishIntegration = true;
-    # theme = "catppuccin-mocha";
     settings = {
       main = {
         font = "Inconsolata Nerd Font:size=16";
         shell = "${pkgs.fish.outPath}/bin/fish --login --interactive";
         login-shell = true;
-        include = "${catppuccinDrv}";
+        # include = "${catppuccinDrv}";
+      };
+      colors-dark = {
+        cursor = "11111b f5e0dc";
+        foreground = "cdd6f4";
+        background = "1e1e2e";
+
+        regular0 = "45475a";
+        regular1 = "f38ba8";
+        regular2 = "a6e3a1";
+        regular3 = "f9e2af";
+        regular4 = "89b4fa";
+        regular5 = "f5c2e7";
+        regular6 = "94e2d5";
+        regular7 = "bac2de";
+
+        bright0 = "585b70";
+        bright1 = "f38ba8";
+        bright2 = "a6e3a1";
+        bright3 = "f9e2af";
+        bright4 = "89b4fa";
+        bright5 = "f5c2e7";
+        bright6 = "94e2d5";
+        bright7 = "a6adc8";
+
+        "16" = "fab387";
+        "17" = "f5e0dc";
+
+        selection-foreground = "cdd6f4";
+        selection-background = "414356";
+
+        search-box-no-match = "11111b f38ba8";
+        search-box-match = "cdd6f4 313244";
+
+        jump-labels = "11111b fab387";
+        urls = "89b4fa";
       };
     };
   };

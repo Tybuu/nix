@@ -56,15 +56,17 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware.bluetooth.enable = true;
-  # hardware.rtl-sdr.enable = true;
-  # hardware.hackrf.enable = true;
-  virtualisation.vswitch.enable = true;
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
 
-  programs.river.enable = true;
+  # programs.river = {
+  #   enable = true;
+  #   package = pkgs.river;
+  # };
+  programs.niri.enable = true;
   # programs.niri = {
   #   enable = true;
   #   package = pkgs.niri-unstable;
@@ -88,8 +90,10 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    mininet
-    openvswitch
+    # mininet
+    # openvswitch
+    pipewire.jack
+    jack2
   ];
   services.udisks2.enable = true;
   security.rtkit.enable = true;
@@ -100,6 +104,29 @@
     pulse.enable = true;
     jack.enable = true;
     wireplumber.enable = true;
+
+    # extraConfig.pipewire."92-low-latency" = {
+    #   "context.properties" = {
+    #     "default.clock.rate" = 48000;
+    #     "default.clock.quantum" = 32;
+    #     "default.clock.min-quantum" = 32;
+    #     "default.clock.max-quantum" = 32;
+    #   };
+    # };
+    #
+    # extraConfig.pipewire-pulse."92-low-latency" = {
+    #   "context.modules" = [
+    #     {
+    #       name = "libpipewire-module-protocol-pulse";
+    #       args = {
+    #         "pulse.min.req" = "32/48000";
+    #         "pulse.default.req" = "32/48000";
+    #         "pulse.max.req" = "32/48000";
+    #         "pulse.min.quantum" = "32/48000";
+    #       };
+    #     }
+    #   ];
+    # };
   };
 
   fonts.packages = with pkgs; [
@@ -143,14 +170,15 @@
       extraPortals = [
         pkgs.xdg-desktop-portal-hyprland
         pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-wlr
       ];
       config = {
-        common.default = "*";
-        hyprland = {
-          default = [
-            "screencast"
-          ];
-        };
+        common.default = ["gtk"];
+        # hyprland = {
+        #   default = [
+        #     "screencast"
+        #   ];
+        # };
       };
     };
   };
@@ -167,10 +195,10 @@
     expat
     libglvnd
     vulkan-loader
-    xorg.libX11
-    xorg.libXcursor
-    xorg.libXrandr
-    xorg.libXi
+    libx11
+    libxcursor
+    libxrandr
+    libxi
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

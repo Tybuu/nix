@@ -121,7 +121,7 @@
         kb_model = "";
         kb_options = "";
         kb_rules = "";
-        follow_mouse = 1;
+        follow_mouse = 2;
         sensitivity = 0;
         accel_profile = "flat";
         touchpad = {
@@ -139,15 +139,20 @@
       windowrule = [
         "match:class .*, suppress_event maximize"
         "match:class ^(com.moonlight_stream.Moonlight)$, immediate on"
+        "match:class ^(com.moonlight_stream.Moonlight)$, focus_on_activate off"
         "match:class ^(osu!)$, immediate on"
         "match:class ^(steam_app.*)$, immediate on"
         "match:class ^(steam_app.*)$, fullscreen_state 2 2"
         "match:class ^$, match:title ^$, match:xwayland 1, match:float 1, match:fullscreen 0, match:pin 0, no_initial_focus on"
       ];
 
+      render = {
+        direct_scanout = 1;
+      };
+
       cursor =
         {
-          warp_on_change_workspace = 2;
+          # warp_on_change_workspace = 1;
         }
         // lib.mkIf (hostName == "tymid") {default_monitor = "DP-2";}
         // lib.mkIf (hostName == "tyoga") {default_monitor = "eDP-1";};

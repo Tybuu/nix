@@ -9,15 +9,17 @@
 # documentation.
 
 # Startup programs
-hyprpaper &
+#
 waybar &
+swww-daemon &
+swww img ~/.config/nix/home-manager/wallpaper.png
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
 # App Binds
 riverctl map normal Super T spawn foot
 riverctl map normal Super B spawn firefox
-riverctl map normal Super R spawn "wofi --show drun"
+riverctl map normal Super E spawn "wofi --show drun"
 riverctl map normal Super F spawn nautilus 
 riverctl map normal Super W spawn "pkill waybar || waybar"
 riverctl map normal Super+Shift S spawn "hyprshot -m region"
@@ -127,7 +129,8 @@ riverctl border-color-focused 0x93a1a1
 riverctl border-color-unfocused 0x586e75
 
 # Set keyboard repeat rate
-riverctl set-repeat 50 300
+riverctl set-repeat 35 500
+riverctl input "pointer-*" accel-profile flat
 
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 riverctl rule-add -app-id 'float*' -title 'foo' float
@@ -140,29 +143,26 @@ riverctl rule-add -app-id "bar" csd
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 -main-ratio 0.5 &
 
-if [[ $(hostname) = "tymid" ]]; then 
+if [[ $(hostname) = "tybeast" ]]; then 
   # App binds
-  riverctl map normal Super+Shift B spawn "firefox -P gedisu --new-window https://music.youtube.com/"
-  riverctl map normal Super P spawn ~/.config/river/scripts/music.sh
-  riverctl map normal Super+Shift Z spawn ~/.config/river/scripts/gaming.sh
+  riverctl map normal Super R spawn ~/.config/river/scripts/music.sh
 
   # Moonlight rules so it always spawn in main monitor on a specific tag
   riverctl rule-add -app-id "com.moonlight_stream.Moonlight" tearing
-  riverctl rule-add -app-id "com.moonlight_stream.Moonlight" tags $(( 1 << 20 ))
-  riverctl rule-add -app-id "com.moonlight_stream.Moonlight" output "DP-2"
+  riverctl rule-add -app-id 'steam_app_*' tearing
 
-  riverctl map normal Super Comma focus-output "DP-1"
-  riverctl map normal Super Period focus-output "DP-2"
-  riverctl map normal Super Slash focus-output "HDMI-A-1"
+  riverctl map normal Super Comma focus-output "DP-2"
+  riverctl map normal Super Period focus-output "DP-1"
+  riverctl map normal Super Slash focus-output "HDMI-A-2"
 
-  riverctl map normal Super+Shift Comma send-to-output -current-tags "DP-1"
-  riverctl map normal Super+Shift Period send-to-output -current-tags "DP-2"
-  riverctl map normal Super+Shift Slash send-to-output -current-tags "HDMI-A-1"
+  riverctl map normal Super+Shift Comma send-to-output -current-tags "DP-2"
+  riverctl map normal Super+Shift Period send-to-output -current-tags "DP-1"
+  riverctl map normal Super+Shift Slash send-to-output -current-tags "HDMI-A-2"
   
-  wlr-randr --output "DP-1" --mode "1920x1080@144.001007"
-  wlr-randr --output "DP-1" --pos 0,0
-  wlr-randr --output "DP-2" --pos 1920,0
-  wlr-randr --output "HDMI-A-1" --pos 4480,0
+wlr-randr \
+    --output "DP-1" --pos 0,0 --mode "2560x1440@180" \
+    --output "DP-2" --pos -1920,0 --mode "1920x1080@144.001007" \
+    --output "HDMI-A-2" --pos 2560,0
 elif [[ $(hostname) = "tyoga" ]]; then
   riverctl map normal Super Comma focus-output "eDP-1"
   riverctl map normal Super Period focus-output "DP-1"
