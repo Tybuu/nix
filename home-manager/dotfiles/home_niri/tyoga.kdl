@@ -52,4 +52,7 @@ binds {
 
     Mod+Shift+Comma {move-column-to-monitor "eDP-1";}
     Mod+Shift+Period {move-column-to-monitor "DP-1"; }
+
+    Mod+U {spawn-sh "brightnessctl s 5%+";}
+    Mod+D {spawn-sh "brightnessctl s 5%-";}
 }
