@@ -29,7 +29,7 @@
         networkmanager-openconnect
       ];
     };
-    firewall.allowedTCPPorts = [8188];
+    firewall.allowedTCPPorts = [8188 8081];
     # interfaces.enp4s0 = {
     #   useDHCP = false;
     #   ipv4.addresses = [
@@ -92,6 +92,7 @@
   environment.systemPackages = with pkgs; [
     wineWow64Packages.waylandFull
     webkitgtk_6_0
+    rclone
     protonup-ng
     vulkan-tools
     (lutris.override {
@@ -154,6 +155,14 @@
     settings = {
       PasswordAuthentication = true;
       PermitRootLogin = "no";
+    };
+  };
+  systemd.services.webdav = {
+    description = "WebDAV Server";
+    after = ["network.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.rclone}/bin/rclone serve webdav /home/tybuu/projects/images --addr :8081 --user admin --pass password123";
+      Restart = "always";
     };
   };
 

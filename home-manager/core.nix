@@ -83,6 +83,7 @@ in {
     swww
     nvitop
     unzip
+    quartus-prime-lite
     google-chrome
     slurp
     gleam
@@ -152,6 +153,10 @@ in {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
     size = 16;
+  };
+
+  home.sessionVariables = {
+    SALT_LICENSE_SERVER = /home/tybuu/license.dat;
   };
 
   # Nicely reload system units when changing configs
