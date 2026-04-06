@@ -20,6 +20,7 @@ in {
     ./modules/foot.nix
     ./modules/hyprland.nix
     ./modules/neovide.nix
+    ./modules/sway.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
@@ -80,6 +81,8 @@ in {
     gcc
     btop
     usbutils
+    pavucontrol
+    autotiling-rs
     swww
     nvitop
     unzip
@@ -156,7 +159,6 @@ in {
   };
 
   home.sessionVariables = {
-    SALT_LICENSE_SERVER = /home/tybuu/license.dat;
   };
 
   # Nicely reload system units when changing configs

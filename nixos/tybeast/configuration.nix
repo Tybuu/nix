@@ -43,6 +43,7 @@
   environment.variables = {
     "__GL_SHADER_DISK_CACHE_SIZE" = "12000000000";
     "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP" = "1";
+    SALT_LICENSE_SERVER = "/home/tybuu/license.dat";
   };
 
   fileSystems."/mnt/disk2" = {
@@ -160,6 +161,7 @@
   systemd.services.webdav = {
     description = "WebDAV Server";
     after = ["network.target"];
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
       ExecStart = "${pkgs.rclone}/bin/rclone serve webdav /home/tybuu/projects/images --addr :8081 --user admin --pass password123";
       Restart = "always";

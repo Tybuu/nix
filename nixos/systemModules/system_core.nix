@@ -62,10 +62,20 @@
     xwayland.enable = true;
   };
 
-  # programs.river = {
-  #   enable = true;
-  #   package = pkgs.river;
-  # };
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraOptions = [
+      "--unsupported-gpu"
+    ];
+  };
+
+  security.polkit.enable = true;
+
+  programs.river = {
+    enable = true;
+    package = pkgs.river;
+  };
   programs.niri.enable = true;
   # programs.niri = {
   #   enable = true;
@@ -167,13 +177,17 @@
   xdg = {
     portal = {
       enable = true;
+      wlr.enable = true;
       extraPortals = [
         pkgs.xdg-desktop-portal-hyprland
         pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-wlr
+        pkgs.xdg-desktop-portal-gnome
       ];
       config = {
         common.default = ["gtk"];
+        sway.default = lib.mkForce ["wlr" "gtk"];
+        # niri.default = ["gnome" "gtk"];
         # hyprland = {
         #   default = [
         #     "screencast"

@@ -147,9 +147,8 @@ if [[ $(hostname) = "tybeast" ]]; then
   # App binds
   riverctl map normal Super R spawn ~/.config/river/scripts/music.sh
 
-  # Moonlight rules so it always spawn in main monitor on a specific tag
   riverctl rule-add -app-id "com.moonlight_stream.Moonlight" tearing
-  riverctl rule-add -app-id 'steam_app_*' tearing
+  # riverctl rule-add -app-id 'steam_app_*' tearing
 
   riverctl map normal Super Comma focus-output "DP-2"
   riverctl map normal Super Period focus-output "DP-1"

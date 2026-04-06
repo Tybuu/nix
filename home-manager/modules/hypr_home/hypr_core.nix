@@ -121,7 +121,7 @@
         kb_model = "";
         kb_options = "";
         kb_rules = "";
-        follow_mouse = 2;
+        follow_mouse = 1;
         sensitivity = 0;
         accel_profile = "flat";
         touchpad = {
@@ -140,6 +140,7 @@
         "match:class .*, suppress_event maximize"
         "match:class ^(com.moonlight_stream.Moonlight)$, immediate on"
         "match:class ^(com.moonlight_stream.Moonlight)$, focus_on_activate off"
+        "match:class ^(com.moonlight_stream.Moonlight)$, suppress_event activateFocus"
         "match:class ^(osu!)$, immediate on"
         "match:class ^(steam_app.*)$, immediate on"
         "match:class ^(steam_app.*)$, fullscreen_state 2 2"
