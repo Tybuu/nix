@@ -7,11 +7,13 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
+
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
     defaultEditor = true;
+    sideloadInitLua = true;
 
     withRuby = true;
     withNodeJs = true;

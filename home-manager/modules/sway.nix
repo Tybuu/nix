@@ -24,22 +24,23 @@
           DP-2 = {
             res = "1920x1080@144hz";
             position = "0,0";
+            transform = "270";
             bg = "${wallpaper} fill";
           };
           DP-1 = {
             res = "2560x1440@180hz";
-            position = "1920,0";
+            position = "1080,0";
             bg = "${wallpaper} fill";
           };
           HDMI-A-2 = {
             res = "1920x1080";
-            position = "4480,0";
+            position = "3640,0";
             bg = "${wallpaper} fill";
           };
         }
         else {};
       input = {
-        "5426:148:Razer_Orochi_V2" = {
+        "*" = {
           accel_profile = "flat";
           pointer_accel = "0";
         };

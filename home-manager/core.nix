@@ -80,6 +80,7 @@ in {
     rustc
     gcc
     btop
+    xdotool
     usbutils
     pavucontrol
     autotiling-rs
