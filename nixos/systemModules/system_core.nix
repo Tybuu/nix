@@ -15,7 +15,11 @@
     overlays = [
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
-
+      (final: prev: {
+        openldap = prev.openldap.overrideAttrs (oldAttrs: {
+          doCheck = false;
+        });
+      })
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -74,7 +78,7 @@
 
   programs.river = {
     enable = true;
-    package = pkgs.river;
+    package = pkgs.river-classic;
   };
   programs.niri.enable = true;
   # programs.niri = {

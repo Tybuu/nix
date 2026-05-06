@@ -82,9 +82,10 @@ in {
     btop
     xdotool
     usbutils
+    antigravity
     pavucontrol
     autotiling-rs
-    swww
+    awww
     nvitop
     unzip
     quartus-prime-lite

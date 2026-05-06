@@ -135,11 +135,17 @@
           sensitivity = -0.5;
         }
       ];
+      # windowrule = [
+      #   "immediate, class:^(com.moonlight_stream.Moonlight)$"
+      #   "immediate, class:^(osu!)$"
+      #   "immediate, class:^(steam_app.*)$"
+      #   "fullscreenstate 2 2, class:^(steam_app.*)$"
+      # ];
 
+      # unstable
       windowrule = [
         "match:class .*, suppress_event maximize"
         "match:class ^(com.moonlight_stream.Moonlight)$, immediate on"
-        "match:class ^(com.moonlight_stream.Moonlight)$, focus_on_activate off"
         "match:class ^(com.moonlight_stream.Moonlight)$, suppress_event activateFocus"
         "match:class ^(osu!)$, immediate on"
         "match:class ^(steam_app.*)$, immediate on"
@@ -172,9 +178,9 @@
         ]
         else if hostName == "tybeast"
         then [
-          "DP-2, 1920x1080@144, -1920x0, 1"
-          "DP-1, 2560x1440@180, 0x0, 1"
-          "HDMI-A-2, preferred, 2560x0, 1"
+          "DP-2, 1920x1080@144, 0x0, 1"
+          "DP-1, 2560x1440@180, 1920x0, 1"
+          "HDMI-A-2, preferred, 4480x0, 1"
         ]
         else [];
       experimental =

@@ -11,8 +11,8 @@
 # Startup programs
 #
 waybar &
-swww-daemon &
-swww img ~/.config/nix/home-manager/wallpaper.png
+awww-daemon &
+awww img ~/.config/nix/home-manager/wallpaper.png &
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
@@ -146,6 +146,7 @@ rivertile -view-padding 6 -outer-padding 6 -main-ratio 0.5 &
 if [[ $(hostname) = "tybeast" ]]; then 
   # App binds
   riverctl map normal Super R spawn ~/.config/river/scripts/music.sh
+  riverctl map normal Super Z spawn ~/.config/river/scripts/scratch.sh
 
   riverctl rule-add -app-id "com.moonlight_stream.Moonlight" tearing
   # riverctl rule-add -app-id 'steam_app_*' tearing
