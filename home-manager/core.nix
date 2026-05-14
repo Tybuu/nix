@@ -18,7 +18,6 @@ in {
     ./modules/waybar.nix
     ./modules/starship.nix
     ./modules/foot.nix
-    ./modules/hyprland.nix
     ./modules/neovide.nix
     ./modules/sway.nix
   ];
@@ -121,10 +120,6 @@ in {
       recursive = true;
     };
     ".config/niri/specific.kdl".source = ./dotfiles/home_niri/${hostName}.kdl;
-    ".config/hypr/scripts" = {
-      source = ./dotfiles/hypr_scripts;
-      recursive = true;
-    };
   };
 
   # Enable home-manager and git
@@ -159,7 +154,7 @@ in {
     name = "Bibata-Modern-Classic";
     size = 16;
   };
-
+  xdg.portal.config.common.default = "*";
   home.sessionVariables = {
   };
 

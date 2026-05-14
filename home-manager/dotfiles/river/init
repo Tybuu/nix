@@ -138,6 +138,7 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
+
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
@@ -149,7 +150,11 @@ if [[ $(hostname) = "tybeast" ]]; then
   riverctl map normal Super Z spawn ~/.config/river/scripts/scratch.sh
 
   riverctl rule-add -app-id "com.moonlight_stream.Moonlight" tearing
-  # riverctl rule-add -app-id 'steam_app_*' tearing
+  riverctl rule-add -app-id "com.moonlight_stream.Moonlight" output DP-1
+  riverctl rule-add -app-id "com.moonlight_stream.Moonlight" tags 4
+  riverctl rule-add -app-id 'steam_app_*' tearing
+  riverctl rule-add -app-id "steam_app_*" output DP-1
+  riverctl rule-add -app-id "steam_app_*" tags 4
 
   riverctl map normal Super Comma focus-output "DP-2"
   riverctl map normal Super Period focus-output "DP-1"

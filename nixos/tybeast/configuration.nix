@@ -25,20 +25,22 @@
     hostName = "tybeast";
     networkmanager = {
       enable = true;
+      unmanaged = ["interface-name:enp4s0"];
       plugins = with pkgs; [
         networkmanager-openconnect
       ];
     };
-    firewall.allowedTCPPorts = [8188 8081];
-    # interfaces.enp4s0 = {
-    #   useDHCP = false;
-    #   ipv4.addresses = [
-    #     {
-    #       address = "192.168.10.3";
-    #       prefixLength = 24;
-    #     }
-    #   ];
-    # };
+    firewall.allowedTCPPorts = [8188 8081 4242];
+    firewall.allowedUDPPorts = [8188 8081 4242];
+    interfaces.enp4s0 = {
+      # useDHCP = false;
+      ipv4.addresses = [
+        {
+          address = "192.168.10.3";
+          prefixLength = 24;
+        }
+      ];
+    };
   };
   environment.variables = {
     "__GL_SHADER_DISK_CACHE_SIZE" = "12000000000";
@@ -58,6 +60,8 @@
   hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.daemon.enable = true;
   hardware.graphics.enable32Bit = true;
+
+  boot.kernelParams = ["nvidia_drm.modeset=1" "nvidia_drm.fbdev=1"];
 
   hardware.nvidia = {
     # Modesetting is required.
