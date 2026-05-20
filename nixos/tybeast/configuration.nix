@@ -25,7 +25,7 @@
     hostName = "tybeast";
     networkmanager = {
       enable = true;
-      unmanaged = ["interface-name:enp4s0"];
+      #unmanaged = ["interface-name:enp4s0"];
       plugins = with pkgs; [
         networkmanager-openconnect
       ];
@@ -34,12 +34,12 @@
     firewall.allowedUDPPorts = [8188 8081 4242];
     interfaces.enp4s0 = {
       # useDHCP = false;
-      ipv4.addresses = [
-        {
-          address = "192.168.10.3";
-          prefixLength = 24;
-        }
-      ];
+      # ipv4.addresses = [
+      #   {
+      #     address = "192.168.10.3";
+      #     prefixLength = 24;
+      #   }
+      # ];
     };
   };
   environment.variables = {

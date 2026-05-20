@@ -83,6 +83,7 @@ in {
     usbutils
     antigravity
     pavucontrol
+    fzf
     autotiling-rs
     awww
     nvitop

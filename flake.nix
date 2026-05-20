@@ -8,7 +8,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-osu.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    #hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     # Home manager
     # home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.url = "github:nix-community/home-manager/";

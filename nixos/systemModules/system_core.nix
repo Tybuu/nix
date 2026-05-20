@@ -7,7 +7,7 @@
   pkgs,
   ...
 }: let
-  pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  # pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   imports = [
     # inputs.niri.nixosModules.niri
@@ -69,8 +69,8 @@ in {
 
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
   };
 
@@ -182,9 +182,9 @@ in {
   };
   hardware.graphics = {
     enable = true;
-    package = pkgs-unstable.mesa;
+    # package = pkgs-unstable.mesa;
     enable32Bit = true;
-    package32 = pkgs-unstable.pkgsi686Linux.mesa;
+    # package32 = pkgs-unstable.pkgsi686Linux.mesa;
   };
 
   # Enable screensharing
