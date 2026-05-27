@@ -37,6 +37,7 @@ in {
           config.allowUnfree = true;
         };
       })
+      (import ./overlays/agy.nix)
     ];
     # Configure your nixpkgs instance
     config = {
@@ -66,7 +67,10 @@ in {
     wl-clipboard
     firefox
     curl
+    agy
     usbutils
+    gemini-cli
+    opencode
     hyprshot
     hyprpaper
     bluetuith
