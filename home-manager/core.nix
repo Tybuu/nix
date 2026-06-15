@@ -77,6 +77,7 @@ in {
     bash
     vim
     nautilus
+    brave
     wofi
     brightnessctl
     cargo
@@ -92,7 +93,6 @@ in {
     awww
     nvitop
     unzip
-    quartus-prime-lite
     google-chrome
     slurp
     gleam

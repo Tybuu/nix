@@ -30,6 +30,11 @@
         networkmanager-openconnect
       ];
     };
+    nat = {
+      enable = true;
+      externalInterface = "wlp3s0";
+      internalInterfaces = ["enp4s0"];
+    };
     firewall.allowedTCPPorts = [8188 8081 4242 5173];
     firewall.allowedUDPPorts = [8188 8081 4242 5173];
     interfaces.enp4s0 = {
@@ -45,7 +50,6 @@
   environment.variables = {
     "__GL_SHADER_DISK_CACHE_SIZE" = "12000000000";
     "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP" = "1";
-    SALT_LICENSE_SERVER = "/home/tybuu/license.dat";
   };
 
   fileSystems."/mnt/disk2" = {

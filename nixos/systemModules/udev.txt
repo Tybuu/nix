@@ -132,4 +132,21 @@ ATTRS{idVendor}=="33aa", ATTRS{idProduct}=="0120", TAG+="uaccess"
 # CMSIS-DAP compatible adapters
 ATTRS{product}=="*CMSIS-DAP*", TAG+="uaccess"
 
+# Tybeast Ones HE (Left)
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0a55", ATTRS{idProduct}=="0a55", MODE="0666", GROUP="plugdev"
+KERNEL=="hidraw*", ATTRS{idVendor}=="0a55", ATTRS{idProduct}=="0a55", MODE="0666", GROUP="plugdev"
+
+# Tybeast Ones HE (Right)
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0727", ATTRS{idProduct}=="0727", MODE="0660", GROUP="plugdev"
+KERNEL=="hidraw*", ATTRS{idVendor}=="0727", ATTRS{idProduct}=="0727", MODE="0660", GROUP="plugdev"
+
+# Compx Nearlink Mouse Dongle
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="373b", ATTRS{idProduct}=="10c9", MODE="0660", GROUP="plugdev"
+KERNEL=="hidraw*", ATTRS{idVendor}=="373b", ATTRS{idProduct}=="10c9", MODE="0660", GROUP="plugdev"
+
+
+# Compx Nearlink Mouse Dongle
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="373b", ATTRS{idProduct}=="121f", MODE="0666", GROUP="plugdev"
+KERNEL=="hidraw*", ATTRS{idVendor}=="373b", ATTRS{idProduct}=="121f", MODE="0666", GROUP="plugdev"
+
 LABEL="probe_rs_rules_end"

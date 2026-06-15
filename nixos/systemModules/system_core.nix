@@ -168,6 +168,11 @@ in {
     };
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
+  # Force the TTY console login to initialize and unlock it
+  security.pam.services.login.enableGnomeKeyring = true;
+
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   services.openssh = {
