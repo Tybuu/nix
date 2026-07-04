@@ -62,11 +62,15 @@ in {
 
   home.packages = with pkgs; [
     sd-switch
+    mpv
     btop
     eza
+    filebrowser
     wl-clipboard
     firefox
     curl
+    unrar
+    p7zip
     agy
     usbutils
     gemini-cli

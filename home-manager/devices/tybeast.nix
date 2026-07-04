@@ -9,6 +9,7 @@
   imports = [
     ../core.nix
     ../modules/gaming.nix
+    ../modules/tmux.nix
   ];
 
   home.packages = with pkgs; [

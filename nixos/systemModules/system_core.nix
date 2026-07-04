@@ -205,6 +205,15 @@ in {
     };
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true; # Allows resolving .local addresses
+    publish = {
+      enable = true;
+      addresses = true;
+    };
+  };
+
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc

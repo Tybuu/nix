@@ -17,7 +17,7 @@ awww img ~/.config/nix/home-manager/wallpaper.png &
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
 # App Binds
-riverctl map normal Super T spawn foot
+riverctl map normal Super T spawn kitty
 riverctl map normal Super B spawn firefox
 riverctl map normal Super E spawn "wofi --show drun"
 riverctl map normal Super F spawn nautilus 

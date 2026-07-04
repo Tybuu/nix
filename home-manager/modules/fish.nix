@@ -10,6 +10,9 @@
         fish_vi_key_bindings
         bind -M insert \cf accept-autosuggestion
       end
+      function files
+        filebrowser --config ~/.config/filebrowser/filebrowser.json
+      end
       function n
         set t_pid (hyprctl activewindow | grep "pid" | sed -E "s/.*pid: (.*)/\1/")
         hyprctl dispatch movetoworkspacesilent special:temp > /dev/null 2>&1

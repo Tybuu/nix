@@ -30,6 +30,6 @@ if (( toggled )); then
 else
   riverctl focus-output $output_name 
   riverctl set-focused-tags $(( 1 << tag_number ))
-  riverctl spawn "google-chrome-stable"
-  riverctl spawn "foot"
+  riverctl spawn "kitty"
+  riverctl spawn "kitty"
 fi

@@ -25,31 +25,33 @@
     hostName = "tybeast";
     networkmanager = {
       enable = true;
-      unmanaged = ["interface-name:enp4s0"];
+      #unmanaged = ["interface-name:enp4s0"];
       plugins = with pkgs; [
         networkmanager-openconnect
       ];
     };
-    nat = {
-      enable = true;
-      externalInterface = "wlp3s0";
-      internalInterfaces = ["enp4s0"];
-    };
-    firewall.allowedTCPPorts = [8188 8081 4242 5173];
-    firewall.allowedUDPPorts = [8188 8081 4242 5173];
-    interfaces.enp4s0 = {
-      useDHCP = false;
-      ipv4.addresses = [
-        {
-          address = "192.168.10.3";
-          prefixLength = 24;
-        }
-      ];
-    };
+    # nat = {
+    #   enable = true;
+    #   externalInterface = "wlp3s0";
+    #   internalInterfaces = ["enp4s0"];
+    # };
+    firewall.allowedTCPPorts = [8188 8081 4242 5173 5174];
+    firewall.allowedUDPPorts = [8188 8081 4242 5173 5174];
+    # interfaces.enp4s0 = {
+    #   useDHCP = false;
+    #   ipv4.addresses = [
+    #     {
+    #       address = "192.168.10.3";
+    #       prefixLength = 24;
+    #     }
+    #   ];
+    # };
   };
   environment.variables = {
     "__GL_SHADER_DISK_CACHE_SIZE" = "12000000000";
     "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP" = "1";
+    "__GL_SHADER_DISK_CACHE_THREADS" = "8";
+    DXVK_STATE_CACHE_PATH = "/home/tybuu/.cache/dxvk";
   };
 
   fileSystems."/mnt/disk2" = {
@@ -66,6 +68,7 @@
   hardware.graphics.enable32Bit = true;
 
   boot.kernelParams = ["nvidia_drm.modeset=1" "nvidia_drm.fbdev=1"];
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -157,6 +160,13 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
+
+    package = pkgs.steam.override {
+      extraEnv = {
+        DXVK_CONFIG = "dxvk.enableGraphicsPipelineLibrary=True;dxvk.numCompilerThreads=8";
+        VKD3D_CONFIG = "vkd3d.enableGraphicsPipelineLibrary=True";
+      };
+    };
   };
 
   services.openssh = {
