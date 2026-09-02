@@ -1,0 +1,58 @@
+output "eDP-1" {
+    // Uncomment this line to disable this output.
+    // off
+
+    mode "1920x1200"
+
+    scale 1.25
+
+    // Transform allows to rotate the output counter-clockwise, valid values are:
+    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+    transform "normal"
+
+    // Position of the output in the global coordinate space.
+    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
+    // The cursor can only move between directly adjacent outputs.
+    // Output scale and rotation has to be taken into account for positioning:
+    // outputs are sized in logical, or scaled, pixels.
+    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+    // so to put another output directly adjacent to it on the right, set its x to 1920.
+    // If the position is unset or results in an overlap, the output is instead placed
+    // automatically.
+    position x=0 y=1440
+}
+
+output "DP-1" {
+    // Uncomment this line to disable this output.
+    // off
+
+    mode "3840x2160"
+
+    scale 1.5
+
+    // Transform allows to rotate the output counter-clockwise, valid values are:
+    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+    transform "normal"
+
+    // Position of the output in the global coordinate space.
+    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
+    // The cursor can only move between directly adjacent outputs.
+    // Output scale and rotation has to be taken into account for positioning:
+    // outputs are sized in logical, or scaled, pixels.
+    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+    // so to put another output directly adjacent to it on the right, set its x to 1920.
+    // If the position is unset or results in an overlap, the output is instead placed
+    // automatically.
+    position x=0 y=0
+}
+
+binds {
+    Mod+Comma {focus-monitor "eDP-1";}
+    Mod+Period {focus-monitor "DP-1"; }
+
+    Mod+Shift+Comma {move-column-to-monitor "eDP-1";}
+    Mod+Shift+Period {move-column-to-monitor "DP-1"; }
+
+    Mod+U {spawn-sh "brightnessctl s 5%+";}
+    Mod+D {spawn-sh "brightnessctl s 5%-";}
+}
