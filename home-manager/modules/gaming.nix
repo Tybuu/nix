@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [
     osu-source.osu-lazer-bin
-    moonlight-qt
+    stable.moonlight-qt
     xclicker
   ];
 }

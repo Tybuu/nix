@@ -23,6 +23,7 @@
   ];
   networking = {
     hostName = "tybeast";
+    nftables.enable = true;
     networkmanager = {
       enable = true;
       #unmanaged = ["interface-name:enp4s0"];
@@ -35,8 +36,15 @@
     #   externalInterface = "wlp3s0";
     #   internalInterfaces = ["enp4s0"];
     # };
-    firewall.allowedTCPPorts = [8188 8081 4242 5173 5174];
-    firewall.allowedUDPPorts = [8188 8081 4242 5173 5174];
+    firewall.trustedInterfaces = [config.services.tailscale.interfaceName];
+    firewall.allowedTCPPorts = [22 8188 8081 4242 5173 5174 47990];
+    firewall.allowedUDPPorts = [22 8188 8081 4242 5173 5174 47990 config.services.tailscale.port];
+    firewall.allowedUDPPortRanges = [
+      {
+        from = 47998;
+        to = 48010;
+      }
+    ];
     # interfaces.enp4s0 = {
     #   useDHCP = false;
     #   ipv4.addresses = [
@@ -47,12 +55,12 @@
     #   ];
     # };
   };
-  environment.variables = {
+  environment.sessionVariables = {
     "__GL_SHADER_DISK_CACHE_SIZE" = "12000000000";
     "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP" = "1";
-    "__GL_SHADER_DISK_CACHE_THREADS" = "8";
-    DXVK_STATE_CACHE_PATH = "/home/tybuu/.cache/dxvk";
+    "__GL_SHADER_DISK_CACHE_THREADS" = 12;
   };
+  services.tailscale.enable = true;
 
   fileSystems."/mnt/disk2" = {
     device = "/dev/disk/by-uuid/391fc4cc-3bf7-40c2-bb3b-030bf78ed485";
@@ -78,7 +86,7 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
@@ -186,6 +194,18 @@
     };
   };
 
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+    settings = {
+      key_rightalt_to_key_win = "enabled";
+    };
+  };
+
+  programs.kdeconnect.enable = true;
+  hardware.uinput.enable = true;
   systemd.services.link = {
     description = "Keyboard Link Service";
     after = ["network.target"];

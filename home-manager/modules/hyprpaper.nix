@@ -7,11 +7,11 @@
     enable = true;
     settings = {
       preload = [
-        "~/.config/nix/home-manager/wallpaper.png"
+        "~/.config/nix/home-manager/wallpapers/uhh.jpg"
       ];
       wallpaper = {
         monitor = "";
-        path = "~/.config/nix/home-manager/wallpaper.png";
+        path = "~/.config/nix/home-manager/wallpapers/uhh.jpg";
       };
     };
   };

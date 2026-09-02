@@ -10,7 +10,7 @@
           "hyprland/workspaces"
         ];
         modules-center = [
-          "custom/music"
+          #"custom/music"
         ];
         modules-right = [
           "pulseaudio"

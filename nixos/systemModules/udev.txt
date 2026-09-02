@@ -144,9 +144,12 @@ KERNEL=="hidraw*", ATTRS{idVendor}=="0727", ATTRS{idProduct}=="0727", MODE="0660
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="373b", ATTRS{idProduct}=="10c9", MODE="0660", GROUP="plugdev"
 KERNEL=="hidraw*", ATTRS{idVendor}=="373b", ATTRS{idProduct}=="10c9", MODE="0660", GROUP="plugdev"
 
-
 # Compx Nearlink Mouse Dongle
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="373b", ATTRS{idProduct}=="121f", MODE="0666", GROUP="plugdev"
 KERNEL=="hidraw*", ATTRS{idVendor}=="373b", ATTRS{idProduct}=="121f", MODE="0666", GROUP="plugdev"
+
+# Nintendo Switch in normal/homebrew/MTP mode
+SUBSYSTEM=="usb", ATTR{idVendor}=="057e", MODE="0666", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0955", ATTR{idProduct}=="7321", MODE="0666", GROUP="plugdev"
 
 LABEL="probe_rs_rules_end"

@@ -69,6 +69,7 @@ in {
 
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
     # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
@@ -164,7 +165,7 @@ in {
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["libvirtd" "wheel" "vboxsf" "vboxusers" "gamemode" "networkmanager"];
+      extraGroups = ["libvirtd" "wheel" "vboxsf" "vboxusers" "gamemode" "networkmanager" "uinput"];
     };
   };
 
@@ -199,20 +200,20 @@ in {
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
       ];
-      config = {
-        common.default = ["gtk" "hyprland"];
-      };
     };
   };
 
   services.avahi = {
     enable = true;
-    nssmdns4 = true; # Allows resolving .local addresses
+    nssmdns4 = true;
     publish = {
       enable = true;
       addresses = true;
+      workstation = true;
     };
+    openFirewall = true;
   };
+  programs.fuse.userAllowOther = true;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [

@@ -17,7 +17,7 @@
         {command = "autotiling-rs";}
       ];
       output = let
-        wallpaper = ../wallpaper.png;
+        wallpaper = ../wallpapers/uhh.jpg;
       in
         if hostName == "tybeast"
         then {

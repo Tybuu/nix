@@ -91,6 +91,7 @@ in {
     xdotool
     usbutils
     antigravity
+    playerctl
     pavucontrol
     fzf
     autotiling-rs
@@ -110,7 +111,7 @@ in {
     ]))
     typst
     rnote
-    river-bedload
+    pear-desktop
     jq
     lswt
     wlr-randr
@@ -131,6 +132,15 @@ in {
     ".config/niri/specific.kdl".source = ./dotfiles/home_niri/${hostName}.kdl;
   };
 
+  services.mako = {
+    enable = true;
+    settings = {
+      # font = "Roboto 10";
+      # backgroundColor = "#282828";
+      # borderColor = "#ebdbb2";
+      default-timeout = 5000;
+    };
+  };
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.zoxide.enable = true;

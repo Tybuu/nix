@@ -21,6 +21,9 @@
         hyprctl dispatch focuswindow pid:$t_pid > /dev/null 2>&1
         hyprctl dispatch movetoworkspace $cur > /dev/null 2>&1
       end
+      function kde_default
+        kdeconnect-cli -d $(kdeconnect-cli -a --id-only) $argv
+      end
     '';
     functions = {
       nvt = "neovide --grid 400x100 --vsync $argv > /dev/null 2>&1 & disown";
