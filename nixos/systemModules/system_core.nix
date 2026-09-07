@@ -117,6 +117,7 @@ in {
     # openvswitch
     pipewire.jack
     jack2
+    efibootmgr
   ];
   services.udisks2.enable = true;
   security.rtkit.enable = true;

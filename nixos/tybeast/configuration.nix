@@ -62,11 +62,11 @@
   };
   services.tailscale.enable = true;
 
-  fileSystems."/mnt/disk2" = {
-    device = "/dev/disk/by-uuid/391fc4cc-3bf7-40c2-bb3b-030bf78ed485";
-    fsType = "ext4";
-    options = ["nofail" "user" "exec"];
-  };
+  # fileSystems."/mnt/disk2" = {
+  #   device = "/dev/disk/by-uuid/391fc4cc-3bf7-40c2-bb3b-030bf78ed485";
+  #   fsType = "ext4";
+  #   options = ["nofail" "user" "exec"];
+  # };
 
   services.flatpak.enable = true;
   # Load nvidia driver for Xorg and Wayland
