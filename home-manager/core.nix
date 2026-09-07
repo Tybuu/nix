@@ -119,6 +119,8 @@ in {
     qutebrowser
     go
     socat
+
+    sound-theme-freedesktop
   ];
   home.file = {
     ".config/river" = {
@@ -140,6 +142,9 @@ in {
       # borderColor = "#ebdbb2";
       default-timeout = 5000;
     };
+    extraConfig = ''
+      on-notify=exec ${pkgs.mpv}/bin/mpv --no-terminal ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga
+    '';
   };
   # Enable home-manager and git
   programs.home-manager.enable = true;

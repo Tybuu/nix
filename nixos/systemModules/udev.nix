@@ -13,5 +13,5 @@
 in {
   users.extraGroups.plugdev = {};
   users.extraUsers.tybuu.extraGroups = ["plugdev" "dialout"];
-  services.udev.packages = [extraUdevRules pkgs.openocd];
+  services.udev.packages = [extraUdevRules pkgs.openocd pkgs.libsigrok];
 }
