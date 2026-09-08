@@ -12,6 +12,6 @@
 
   home.packages = with pkgs; [
     moonlight-qt
-    osu-lazer
+    streamlink
   ];
 }
