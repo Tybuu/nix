@@ -4,10 +4,6 @@
   config,
   ...
 }: let
-  # linux-asahi built from the "fairydust" branch (experimental DisplayPort
-  # Alt Mode over USB-C). Same version/structuredExtraConfig as the stock
-  # linux-asahi package in nixos-apple-silicon — only the source commit
-  # differs.
   linux-fairydust = pkgs.callPackage (
     {
       stdenv,
@@ -20,15 +16,17 @@
       kernel = buildLinux {
         inherit stdenv lib;
         pname = "linux-asahi-fairydust";
-        version = "7.0.10";
-        modDirVersion = "7.0.10";
-        extraMeta.branch = "7.0";
+        version = "7.1.12";
+        modDirVersion = "7.1.12";
+
+        # Bypass unused/removed kernel options thrown during compilation
+        ignoreConfigErrors = true;
 
         src = fetchFromGitHub {
           owner = "AsahiLinux";
           repo = "linux";
-          rev = "ce3b823962dc839c5d5b0b8198f75bd8c60aeea3"; # tip of the fairydust branch — check for a newer commit before building
-          hash = "sha256-FnAY8ZiSR0NaX/qP47034A/mrBwVodWXChusX9H/hxs=";
+          rev = "b8810ad6442699f610984f3eceea2e3234a50b77"; # tip of fairydust
+          hash = "sha256-FTns+uaqYbCYSsH0y7ypTHUzZs3GAM08vRwHGy2Tozc=";
         };
 
         kernelPatches =
@@ -37,6 +35,7 @@
               name = "Asahi config";
               patch = null;
               structuredExtraConfig = with lib.kernel; {
+                # Your original working flags
                 ARM64_16K_PAGES = yes;
                 ARM64_MEMORY_MODEL_CONTROL = yes;
                 ARM64_ACTLR_STATE = yes;
@@ -45,6 +44,13 @@
                 HID_APPLE = module;
                 APPLE_PMGR_MISC = yes;
                 APPLE_PMGR_PWRSTATE = yes;
+
+                # New 7.1+ Type-C and DisplayPort Alt Mode flags
+                TYPEC = yes;
+                TYPEC_DP_ALTMODE = yes;
+                PHY_APPLE_ATC = module;
+                DRM_APPLE = module;
+                APPLE_SART = module;
               };
               features.rust = true;
             }
@@ -57,7 +63,5 @@
 in {
   boot = {
     kernelPackages = lib.mkForce linux-fairydust;
-    # Optional: only needed if you also use a DisplayLink adapter
-    # extraModulePackages = [ config.boot.kernelPackages.evdi ];
   };
 }
