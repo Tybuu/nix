@@ -119,7 +119,7 @@ in {
     qutebrowser
     go
     socat
-
+    streamlink
     sound-theme-freedesktop
   ];
   home.file = {
