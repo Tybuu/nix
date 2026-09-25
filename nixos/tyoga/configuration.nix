@@ -20,6 +20,7 @@
       enable = true;
     };
   };
+  programs.kdeconnect.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
   programs.steam = {
@@ -28,7 +29,6 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
-
   environment.systemPackages = with pkgs; [
     wineWow64Packages.waylandFull
     webkitgtk_6_0
