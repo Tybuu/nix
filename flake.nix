@@ -8,8 +8,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-osu.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixos-apple-silicon.url = "github:nix-community/nixos-apple-silicon";
-    nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
     #hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     # Home manager
     # home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -41,14 +39,6 @@
       tyoga = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [./nixos/tyoga/configuration.nix];
-      };
-      tymini = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          inputs.nixos-apple-silicon.nixosModules.apple-silicon-support
-          ./nixos/tymini/configuration.nix
-        ];
       };
     };
     homeConfigurations = {
@@ -88,17 +78,6 @@
         # > Our main home-manager configuration file <
         modules = [
           ./home-manager/devices/tyoga.nix
-        ];
-      };
-      "tybuu@tymini" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-linux;
-        extraSpecialArgs =
-          {inherit inputs outputs;}
-          // {
-            hostName = "tymini";
-          };
-        modules = [
-          ./home-manager/devices/tymini.nix
         ];
       };
     };

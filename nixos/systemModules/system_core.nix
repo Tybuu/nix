@@ -17,11 +17,11 @@ in {
     overlays = [
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
-      (final: prev: {
-        openldap = prev.openldap.overrideAttrs (oldAttrs: {
-          doCheck = false;
-        });
-      })
+      # (final: prev: {
+      #   openldap = prev.openldap.overrideAttrs (oldAttrs: {
+      #     doCheck = false;
+      #   });
+      # })
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -166,10 +166,9 @@ in {
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["libvirtd" "wheel" "vboxsf" "vboxusers" "gamemode" "networkmanager" "uinput"];
+      extraGroups = ["libvirtd" "wheel" "vboxsf" "vboxusers" "gamemode" "networkmanager" "uinput" "input"];
     };
   };
-
   services.gnome.gnome-keyring.enable = true;
 
   # Force the TTY console login to initialize and unlock it
@@ -200,6 +199,7 @@ in {
       enable = true;
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-hyprland
       ];
     };
   };
