@@ -70,6 +70,7 @@
   };
 
   boot.kernelParams = ["nvidia-drm.modeset=1"];
+  boot.blacklistedKernelModules = ["snd_hda_intel"];
 
   environment.systemPackages = with pkgs; [
     wineWowPackages.waylandFull
