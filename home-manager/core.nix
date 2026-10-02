@@ -73,7 +73,6 @@ in {
     p7zip
     agy
     usbutils
-    gemini-cli
     opencode
     hyprshot
     hyprpaper
@@ -90,7 +89,6 @@ in {
     btop
     xdotool
     usbutils
-    antigravity
     playerctl
     pavucontrol
     fzf
@@ -152,9 +150,13 @@ in {
   programs.zoxide.enableFishIntegration = true;
   programs.git = {
     enable = true;
-    settings.user = {
-      name = "tybuu";
-      email = "tybuu1234@gmail.com";
+    settings = {
+      user = {
+        name = "tybuu";
+        email = "tybuu1234@gmail.com";
+      };
+      core.fsmonitor = true;
+      core.untrackedCache = true;
     };
   };
   programs.direnv = {
@@ -173,7 +175,7 @@ in {
   };
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   home.pointerCursor = {
-    gtk.enable = true;
+    enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
     size = 16;

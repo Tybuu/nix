@@ -46,7 +46,6 @@ in {
       # Opinionated: disable global registry
       # flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = config.nix.nixPath;
 
       trusted-users = ["root" "tybuu"];
 
@@ -189,7 +188,7 @@ in {
   hardware.graphics = {
     enable = true;
     # package = pkgs-unstable.mesa;
-    #enable32Bit = true;
+    enable32Bit = true;
     # package32 = pkgs-unstable.pkgsi686Linux.mesa;
   };
 

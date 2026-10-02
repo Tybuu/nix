@@ -17,19 +17,25 @@
   networking = {
     hostName = "tymid";
     networkmanager.enable = true;
-    networkmanager.unmanaged = ["interface-name:enp0s31f6"];
-    interfaces.enp0s31f6 = {
-      # useDHCP = false;
-      ipv4.addresses = [
-        {
-          address = "192.168.10.7";
-          prefixLength = 24;
-        }
-      ];
-    };
+    # networkmanager.unmanaged = ["interface-name:enp0s31f6"];
+    # interfaces.enp0s31f6 = {
+    #   # useDHCP = false;
+    #   ipv4.addresses = [
+    #     {
+    #       address = "192.168.10.7";
+    #       prefixLength = 24;
+    #     }
+    #   ];
+    # };
   };
   systemd.services.NetworkManager-wait-online.enable = false;
+  environment.sessionVariables = {
+    "__GL_SHADER_DISK_CACHE_SIZE" = "12000000000";
+    "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP" = "1";
+  };
 
+  programs.kdeconnect.enable = true;
+  powerManagement.cpuFreqGovernor = "performance";
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -66,14 +72,15 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
 
-  boot.kernelParams = ["nvidia-drm.modeset=1"];
-  boot.blacklistedKernelModules = ["snd_hda_intel"];
+  # boot.kernelParams = ["nvidia-drm.modeset=1"];
+  # boot.blacklistedKernelModules = ["snd_hda_intel"];
 
+  programs.gamemode.enable = true;
   environment.systemPackages = with pkgs; [
-    wineWowPackages.waylandFull
+    protonup-ng
   ];
 
   hardware.i2c.enable = true;
@@ -90,7 +97,7 @@
     after = ["network.target"];
     wantedBy = ["multi-user.target"];
     serviceConfig = {
-      ExecStart = "/home/tybuu/projects/Keyboards/tybeast_he/link/target/release/keyboard-link";
+      ExecStart = "/home/tybuu/projects/Keyboards-firmware/tybeast_he/link/target/release/keyboard-link";
       Restart = "always";
     };
   };
