@@ -22,6 +22,10 @@
         style = "bold mauve";
       };
 
+      git_status = {
+        disabled = true;
+      };
+
       directory = {
         truncation_length = 4;
         style = "bold lavender";

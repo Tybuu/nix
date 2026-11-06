@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     eden
     prusa-slicer
+    ltspice
     fusee-nano
     shadps4-qtlauncher
   ];

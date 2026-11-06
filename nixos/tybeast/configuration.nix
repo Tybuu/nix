@@ -62,11 +62,11 @@
   };
   services.tailscale.enable = true;
 
-  # fileSystems."/mnt/disk2" = {
-  #   device = "/dev/disk/by-uuid/391fc4cc-3bf7-40c2-bb3b-030bf78ed485";
-  #   fsType = "ext4";
-  #   options = ["nofail" "user" "exec"];
-  # };
+  fileSystems."/mnt/disk2" = {
+    device = "/dev/disk/by-uuid/7638f978-7a84-420b-9097-3e6e45264138";
+    fsType = "ext4";
+    options = ["nofail" "user" "exec"];
+  };
 
   services.flatpak.enable = true;
   # Load nvidia driver for Xorg and Wayland
@@ -168,6 +168,9 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
 
     package = pkgs.steam.override {
       extraEnv = {
@@ -203,6 +206,17 @@
       key_rightalt_to_key_win = "enabled";
     };
   };
+  security.sudo.extraRules = [
+    {
+      users = ["tybuu"];
+      commands = [
+        {
+          command = "/home/tybuu/boot_windows.sh";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
+  ];
 
   programs.kdeconnect.enable = true;
   hardware.uinput.enable = true;

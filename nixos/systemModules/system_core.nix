@@ -34,6 +34,9 @@ in {
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;
+      problems.handlers = {
+        "gtk+".broken = "warn";
+      };
     };
   };
 
@@ -197,9 +200,15 @@ in {
     portal = {
       enable = true;
       extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-termfilechooser
       ];
+      config = {
+        common = {
+          default = ["hyprland"];
+        };
+        hyprland."org.freedesktop.impl.portal.FileChooser" = ["termfilechooser"];
+      };
     };
   };
 

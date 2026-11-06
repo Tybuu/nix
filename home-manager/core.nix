@@ -12,7 +12,7 @@
 in {
   imports = [
     ./modules/nvim.nix
-    ./modules/hyprpaper.nix
+    # ./modules/hyprpaper.nix
     ./modules/kitty.nix
     ./modules/fish.nix
     ./modules/waybar.nix
@@ -20,6 +20,7 @@ in {
     ./modules/foot.nix
     ./modules/neovide.nix
     ./modules/sway.nix
+    ./modules/noctalia.nix
   ];
   # You can import other home-manager modules here
   nixpkgs = {
@@ -73,7 +74,6 @@ in {
     p7zip
     agy
     usbutils
-    opencode
     hyprshot
     hyprpaper
     bluetuith
@@ -92,6 +92,7 @@ in {
     playerctl
     pavucontrol
     fzf
+    yazi
     autotiling-rs
     awww
     nvitop
@@ -155,8 +156,7 @@ in {
         name = "tybuu";
         email = "tybuu1234@gmail.com";
       };
-      core.fsmonitor = true;
-      core.untrackedCache = true;
+      status.ignoreSubmodules = "all";
     };
   };
   programs.direnv = {
