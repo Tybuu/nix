@@ -29,7 +29,7 @@
       nvt = "neovide --grid 400x100 --vsync $argv > /dev/null 2>&1 & disown";
     };
     shellAliases = {
-      ls = "eza --icons";
+      ls = "eza --icons always";
       hms = "home-manager switch --flake";
     };
   };

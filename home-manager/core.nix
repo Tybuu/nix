@@ -115,8 +115,8 @@ in {
     lswt
     wlr-randr
     chafa
-    qutebrowser
     go
+    libreoffice
     socat
     streamlink
     sound-theme-freedesktop

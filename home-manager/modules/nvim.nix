@@ -38,6 +38,7 @@
         stylua
         alejandra
         rustfmt
+        ruff
         typstyle
       ];
 
